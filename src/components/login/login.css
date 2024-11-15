@@ -1,0 +1,111 @@
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.login-logo img {
+  width: 200px;
+  margin-bottom: 20px;
+}
+
+.login-header {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.login-form {
+  width: 100%;
+  max-width: 400px;
+}
+
+.inForm-group {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.error {
+  border-color: red;
+}
+
+.error-text {
+  color: red;
+  margin-left: 25px;
+}
+.input-wrapper .error-text {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+}
+
+.logInput {
+  width: 100%;
+  padding: 12px 40px 12px 37px; 
+  border: 2px solid #FF6C3A;
+  border-radius: 25px;
+  font-size: 1rem;
+  color: #333;
+}
+
+.icon {
+  position: absolute;
+  left: 15px;
+  color: #6c757d;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 15px;
+  cursor: pointer;
+  color: #6c757d;
+}
+
+.captcha-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.form-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.forgot-link {
+  color: #FF6C3A;
+  text-decoration: none;
+}
+
+.login-button,
+.sso-button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 20px;
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.login-button {
+  background-color: #FF6C3A;
+  color: #fff;
+  cursor: pointer;
+}
+
+.sso-button {
+  background-color: transparent;
+  color: #FF6C3A;
+  cursor: pointer;
+}
