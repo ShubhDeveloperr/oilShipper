@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Responsive, WidthProvider } from 'react-grid-layout';
-import './Dashboard.css';
+import './dashboard.css';
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
 
