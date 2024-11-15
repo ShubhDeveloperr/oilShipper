@@ -4,8 +4,8 @@ import "./forgetPassword.css";
 import { useDispatch } from "react-redux";
 import { setToken } from "../../../store/authSlice";
 import { useNavigate } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import CustomModal from "../../../helpers/models/model";
 
 const ForgotPassword: React.FC = () => {
@@ -75,7 +75,7 @@ const ForgotPassword: React.FC = () => {
       <form onSubmit={handleSubmit} className="forgot-password-form">
         <div className="mainWrapper">
         <div className="inputWrapper">
-        <FontAwesomeIcon icon={faEnvelope} className="icon email-icon" />
+        {/* <FontAwesomeIcon icon={faEnvelope} className="icon email-icon" /> */}
           <input
             type="email"
             value={email}
@@ -87,7 +87,7 @@ const ForgotPassword: React.FC = () => {
         </div>
         {requiredError.email && <span className="error-text">Required*</span>}
         </div>
-        <div className="captcha-container">
+        <div className="captcha-container-f">
           <ReCAPTCHA
             sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
             onChange={handleCaptchaChange}

@@ -50,4 +50,14 @@ export const colourStyles: StylesConfig<PipelineOption, true> = {
         // padding:'10px',
         // boxSizing:'border-box'
     }),
+    menu: (styles) => ({
+      ...styles,
+      zIndex: 10,
+      backgroundColor: '#1f2a36',
+    }),
+    menuList: (styles) => ({
+      ...styles,
+      zIndex: 10, 
+      padding: '0', 
+    }),
   };

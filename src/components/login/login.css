@@ -7,19 +7,23 @@
 }
 
 .login-logo img {
-  width: 200px;
+  width: 160px;
   margin-bottom: 20px;
 }
 
 .login-header {
-  text-align: center;
-  font-size: 1.5rem;
-  margin-bottom: 20px;
-  color: #333;
+  background: initial !important;
+    color: #FF6C3A !important;
+    padding-top: 0px !important;
+    font-size: 26px !important;
+    font-weight: bold;
+    margin-bottom: 20px !important;
+    /* float: left; */
+    /* width: 100%; */
 }
 
 .login-form {
-  width: 100%;
+  /* width: 100%; */
   max-width: 400px;
 }
 
@@ -50,7 +54,7 @@
 
 .logInput {
   width: 100%;
-  padding: 12px 40px 12px 37px; 
+  padding: .375rem 2.5rem;
   border: 2px solid #FF6C3A;
   border-radius: 25px;
   font-size: 1rem;
@@ -84,8 +88,12 @@
 }
 
 .forgot-link {
-  color: #FF6C3A;
-  text-decoration: none;
+  color: #FF6C3A !important;
+  font-size: 13px;
+  font-weight: bold;
+  margin-top: 2px;
+  float: right;
+  MARGIN: 3px 0px 0px 34px;
 }
 
 .login-button,
@@ -102,10 +110,16 @@
   background-color: #FF6C3A;
   color: #fff;
   cursor: pointer;
+  height: 40px;
+  font-size: 23px;
+  padding-top: 3px;
+  font-weight: 600;
 }
 
 .sso-button {
   background-color: transparent;
-  color: #FF6C3A;
+  color: #FF6C3A !important;
+  font-size: 15px !important;
+  font-weight: bold;
   cursor: pointer;
 }

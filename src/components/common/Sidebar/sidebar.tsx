@@ -21,7 +21,6 @@ const Sidebar: React.FC<SidebarProps> = () => {
       <div className={`sidebar ${collapsed ? 'collapsed' : ''}`}>
         <div className="sidebar-header">
           <img src='https://test.natgashub.com/Assets/NatGasHub-Logo1.svg' alt='logo' className='companylogo' />
-          <h2 className="companyName">{collapsed ? '' : 'Oil Shipper'}</h2>
         </div>
         <nav>
           <ul>

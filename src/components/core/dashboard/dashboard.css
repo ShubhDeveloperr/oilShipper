@@ -9,7 +9,7 @@
 
 .layout-select {
   padding: 8px;
-  font-size: 16px;
+  font-size: 13px;
 }
 
 .layout {
@@ -19,7 +19,7 @@
 .grid-item {
   background-color: #34495e;
   color: white;
-  border-radius: 5px;
+  border-radius: 3px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -42,24 +42,30 @@
 }
 
 .item-header {
-  background-color: #2c3e50; 
+  background-color: #272f3c !important; 
   color: #fff;
-  padding: 15px 20px;
+  padding: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-weight: bold;
+  /* font-weight: bold; */
   /* cursor: move; */
-  font-size: 18px;
-  border-bottom: 2px solid #1f2a36;
+  /* font-size: 18px; */
+  /* border-bottom: 1px solid #1f2a36; */
   
 }
 
 
-.pipeline-select {
+/* .pipeline-select {
   width: 200px;
   margin: 10px 0;
   background-color: #1f2a36 !important;
+} */
+
+.notice-close-btn{
+  font-size: large;
+    /* margin: 6px -90px 0px -20px; */
+    cursor: pointer;
 }
 
 .list-content {
@@ -80,7 +86,7 @@ table {
 }
 
 table th, table td {
-  padding: 12px;
+  padding: 6px;
   text-align: left;
   border-bottom: 1px solid #34495e;
 }
@@ -89,14 +95,17 @@ table th {
   background-color: #1f2a36;
   color: #ecf0f1; 
   font-weight: bold;
+  position: sticky;
+  z-index: 1;
+  top: 0;
 }
 
 table tr:nth-child(even) {
-  background-color: #34495e; 
+  background-color: #272f3c !important; 
 }
 
 table tr:nth-child(odd) {
-  background-color: #2c3e50; 
+  background-color: #3c4658 !important; 
 }
 
 table td {

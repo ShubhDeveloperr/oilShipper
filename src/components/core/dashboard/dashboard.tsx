@@ -3,6 +3,7 @@ import { Responsive, WidthProvider, Layout } from 'react-grid-layout';
 import Select, { MultiValue, SingleValue } from 'react-select';
 import './dashboard.css';
 import { colourStyles } from '../../../helpers/styles/dropdown';
+import { FaTimes } from 'react-icons/fa';
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
 
@@ -126,6 +127,9 @@ const Dashboard: React.FC = () => {
                 isSearchable
               /> */}
             </div>
+            <div>
+            <FaTimes className="notice-close-btn" aria-label="Close" />
+          </div>
           </div>
           <div className="list-content draggable-handle">
             <div className="table-container">
@@ -174,6 +178,9 @@ const Dashboard: React.FC = () => {
                 // }}
               />
             </div>
+            <div>
+            <FaTimes className="notice-close-btn" aria-label="Close" />
+          </div>
           </div>
           <div className="list-content draggable-handle">
             <div className="table-container">
