@@ -19,7 +19,7 @@ const Dashboard: React.FC = () => {
       <div className="controls">
         <select className="layout-select">
           <option value="default">Select Layout</option>
-          {/* Additional layout options can go here */}
+          {/* Additional layout options can go here */} 
         </select>
       </div>
 
