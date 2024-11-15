@@ -43,7 +43,7 @@ const LoginForm: React.FC = () => {
     if (!captchaVerified) {
       setShowModal(true);
     } else {
-      await dispatch(loginUser({ login: login.trim(), password: password.trim() }));
+      await dispatch(loginUser({ email: login.trim(), password: password.trim() }));
       navigate("/2fa");
     }
   };
@@ -99,6 +99,7 @@ const LoginForm: React.FC = () => {
               type={showPassword ? "text" : "password"}
               placeholder="Password"
               value={password}
+              autoComplete="true"
               onChange={(e) => setPassword(e.target.value.trim())}
               onFocus={() => setRequiredError({ ...requiredError, password: false })}
               className={`logInput ${requiredError.password ? 'error' : ''}`}
