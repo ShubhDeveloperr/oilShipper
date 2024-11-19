@@ -48,11 +48,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* font-weight: bold; */
-  /* cursor: move; */
-  /* font-size: 18px; */
-  /* border-bottom: 1px solid #1f2a36; */
-  
 }
 
 
@@ -110,4 +105,77 @@ table tr:nth-child(odd) {
 
 table td {
   color: #ecf0f1; 
+}
+
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+  .controls {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 992px) {
+  .grid-item {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  .item-header {
+    font-size: 12px;
+    padding: 8px;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-container {
+    padding: 10px;
+  }
+
+  .layout {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+
+  .grid-item {
+    font-size: 12px;
+    width: 100%;
+  }
+
+  .item-header {
+    font-size: 10px;
+    padding: 6px;
+  }
+
+  .item-content {
+    padding: 6px;
+  }
+
+  table th, table td {
+    font-size: 12px;
+    padding: 4px;
+  }
+}
+
+@media (max-width: 576px) {
+  .controls {
+    text-align: center;
+  }
+
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .grid-item {
+    margin-bottom: 10px;
+    width: 100%;
+  }
+
+  .item-header {
+    font-size: 10px;
+  }
+
+  table {
+    font-size: 10px;
+  }
 }

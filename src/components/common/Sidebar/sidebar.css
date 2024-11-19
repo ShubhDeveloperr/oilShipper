@@ -138,38 +138,26 @@ nav ul li a:hover {
   cursor: pointer;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .sidebar {
-    width: 100%;
-    height: auto;
-    position: relative;
-  }
-  
-  .sidebar.collapsed {
-    width: 100%;
-  }
-
-  .toggle-btn {
-    left: auto;
-    right: 20px;
-    top: 32px;
+    width: 200px;
   }
 
   .main-content {
-    margin-left: 0;
-    width: 100%; 
+    margin-left: 200px;
+    width: calc(100% - 200px);
+  }
+
+  .sidebar.collapsed ~ .main-content {
+    margin-left: 70px;
+    width: calc(100% - 70px);
   }
 }
 
+/* Mobile View (max-width: 768px) */
 @media (max-width: 768px) {
   .sidebar {
-    width: 100%;
-    height: auto;
-    position: relative;
-  }
-
-  .sidebar.collapsed {
-    width: 100%;
+    width: 0;
   }
 
   .main-content {
@@ -177,8 +165,30 @@ nav ul li a:hover {
     width: 100%;
   }
 
-  .toggle-btn {
-    right: 20px;
-    left: auto;
+  .sidebar.collapsed ~ .main-content {
+    margin-left: 45px;
+    width: 100%;
+  }
+}
+
+/* Extra Small Mobile View (max-width: 480px) */
+@media (max-width: 480px) {
+  .sidebar {
+    width: 0;
+  }
+
+  .main-content {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .sidebar.collapsed ~ .main-content {
+    margin-left: 45px;
+    width: 100%;
+  }
+
+  /* Optional: If you want to hide sidebar header or reduce padding on mobile */
+  .sidebar-header {
+    padding: 5px;
   }
 }

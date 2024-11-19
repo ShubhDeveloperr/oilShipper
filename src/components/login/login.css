@@ -13,13 +13,14 @@
 
 .login-header {
   background: initial !important;
-    color: #FF6C3A !important;
-    padding-top: 0px !important;
-    font-size: 26px !important;
-    font-weight: bold;
-    margin-bottom: 20px !important;
-    /* float: left; */
-    /* width: 100%; */
+  color: #ff6c3a !important;
+  padding-top: 0px !important;
+  font-size: 23px !important;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 20px !important;
+  /* float: left; */
+  width: 100%;
 }
 
 .login-form {
@@ -30,6 +31,7 @@
 .inForm-group {
   margin-bottom: 20px;
   position: relative;
+  margin: 20px 20px 0px 20px !important;
 }
 
 .input-wrapper {
@@ -54,11 +56,13 @@
 
 .logInput {
   width: 100%;
-  padding: .375rem 2.5rem;
-  border: 2px solid #FF6C3A;
+  padding: 0.375rem 2.5rem;
+  border: 2px solid #ff6c3a;
   border-radius: 25px;
   font-size: 1rem;
   color: #333;
+  height: 44px;
+  /* margin: 20px 20px 0px 20px !important; */
 }
 
 .icon {
@@ -78,22 +82,34 @@
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
+  margin: 20px 20px 0px 20px !important;
 }
 
 .form-footer {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   margin-bottom: 20px;
+  padding: 14px;
+  gap: 14px;
 }
 
 .forgot-link {
-  color: #FF6C3A !important;
+  color: #ff6c3a !important;
   font-size: 13px;
   font-weight: bold;
-  margin-top: 2px;
-  float: right;
-  MARGIN: 3px 0px 0px 34px;
+  /* margin-top: 2px; */
+  /* float: right; */
+  /* MARGIN: 3px 0px 0px 34px; */
+}
+.checkBoxRem{
+ border: 1px solid #666;
+}
+
+.rememberMe {
+  color: #666 !important;
+  font-size: 1rem;
+  padding-left: 14px;
 }
 
 .login-button,
@@ -107,7 +123,7 @@
 }
 
 .login-button {
-  background-color: #FF6C3A;
+  background-color: #ff6c3a;
   color: #fff;
   cursor: pointer;
   height: 40px;
@@ -118,8 +134,12 @@
 
 .sso-button {
   background-color: transparent;
-  color: #FF6C3A !important;
+  color: #ff6c3a !important;
   font-size: 15px !important;
   font-weight: bold;
   cursor: pointer;
 }
+
+/* .login-btns{
+  width: 92%;
+} */

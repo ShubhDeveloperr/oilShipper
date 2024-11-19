@@ -75,61 +75,67 @@ const LoginForm: React.FC = () => {
       <div className="login-logo">
         <img src="https://test.natgashub.com/Assets/NatGasHub-Logo1.svg" alt="oilShipper Logo" />
       </div>
-      <h2 className="login-header">Sign in to start your session</h2>
-      <form onSubmit={handleSubmit} className="login-form">
-        <div className="inForm-group">
-          <div className="input-wrapper">
-            <FontAwesomeIcon icon={faEnvelope} className="icon email-icon" />
-            <input
-              type="email"
-              placeholder="Email"
-              value={login}
-              onChange={(e) => setLogin(e.target.value.trim())}
-              onFocus={() => setRequiredError({ ...requiredError, email: false })}
-              className={`logInput ${requiredError.email ? 'error' : ''}`}
+      <div>
+
+
+        <p className="login-header">Sign in to start your session</p>
+        <form onSubmit={handleSubmit} className="login-form">
+          <div className="inForm-group">
+            <div className="input-wrapper">
+              <FontAwesomeIcon icon={faEnvelope} className="icon email-icon" />
+              <input
+                type="email"
+                placeholder="Email"
+                value={login}
+                onChange={(e) => setLogin(e.target.value.trim())}
+                onFocus={() => setRequiredError({ ...requiredError, email: false })}
+                className={`logInput ${requiredError.email ? 'error' : ''}`}
+              />
+            </div>
+            {requiredError.email && <span className="error-text">Required*</span>}
+          </div>
+
+          <div className="inForm-group">
+            <div className="input-wrapper">
+              <FontAwesomeIcon icon={faLock} className="icon lock-icon" />
+              <input
+                type={showPassword ? "text" : "password"}
+                placeholder="Password"
+                value={password}
+                autoComplete="true"
+                onChange={(e) => setPassword(e.target.value.trim())}
+                onFocus={() => setRequiredError({ ...requiredError, password: false })}
+                className={`logInput ${requiredError.password ? 'error' : ''}`}
+              />
+              <span className="password-toggle" onClick={togglePasswordVisibility}>
+                <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+              </span>
+            </div>
+            {requiredError.password && <span className="error-text">Required*</span>}
+          </div>
+
+          <div className="captcha-container">
+            <ReCAPTCHA
+              sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+              onChange={handleCaptchaChange}
             />
           </div>
-            {requiredError.email && <span className="error-text">Required*</span>}
-        </div>
 
-        <div className="inForm-group">
-          <div className="input-wrapper">
-            <FontAwesomeIcon icon={faLock} className="icon lock-icon" />
-            <input
-              type={showPassword ? "text" : "password"}
-              placeholder="Password"
-              value={password}
-              autoComplete="true"
-              onChange={(e) => setPassword(e.target.value.trim())}
-              onFocus={() => setRequiredError({ ...requiredError, password: false })}
-              className={`logInput ${requiredError.password ? 'error' : ''}`}
-            />
-            <span className="password-toggle" onClick={togglePasswordVisibility}>
-              <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+          <div className="form-footer">
+            <div className="rememberMe">
+              <input type="checkbox" className="checkBoxRem" /> Remember Me
+            </div>
+            <span onClick={forgetPassword} className="forgot-link" style={{ cursor: "pointer", color: "#FF6C3A" }}>
+              Can't access your account?
             </span>
           </div>
-            {requiredError.password && <span className="error-text">Required*</span>}
-        </div>
 
-        <div className="captcha-container">
-          <ReCAPTCHA
-            sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
-            onChange={handleCaptchaChange}
-          />
-        </div>
-
-        <div className="form-footer">
-          <label>
-            <input type="checkbox" /> Remember Me
-          </label>
-          <span onClick={forgetPassword} className="forgot-link" style={{ cursor: "pointer", color: "#FF6C3A" }}>
-            Can't access your account?
-          </span>
-        </div>
-
-        <button type="submit" className="login-button">Log in</button>
-        <button type="button" className="sso-button">Sign in with SSO (Single Sign On)</button>
-      </form>
+          <div className="login-btns">
+            <button type="submit" className="login-button">Log in</button>
+            <button type="button" className="sso-button">Sign in with SSO (Single Sign On)</button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };
