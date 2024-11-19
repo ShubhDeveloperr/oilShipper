@@ -1,20 +1,38 @@
 import React, { useState } from 'react';
 import { FaBars, FaChevronLeft, FaTachometerAlt, FaList, FaFileAlt, FaRegNewspaper, FaTicketAlt } from 'react-icons/fa';
-import { NavLink, Outlet } from 'react-router-dom';
+import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import './sidebar.css';
-import LogoutButton from '../Logout/logout';
+// import LogoutButton from '../Logout/logout';
+import Header from '../Header/header';
+import { logout } from '../../../store/authSlice';
+import { useDispatch } from 'react-redux';
 
 type SidebarProps = {
-  activeRoute: string; 
+  activeRoute: string;
 };
 
 const Sidebar: React.FC<SidebarProps> = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [collapsed, setCollapsed] = useState<boolean>(false);
 
   const toggleSidebar = () => {
     setCollapsed(!collapsed);
   };
 
+  const handleManageSecurity = () => {
+    console.log('Manage Security clicked');
+  };
+
+  const handleChangePassword = () => {
+    console.log('Change Password clicked');
+  };
+
+  const handleLogout = () => {
+    console.log('Log Out clicked');
+    dispatch(logout());
+    navigate("/login");
+  };
 
   return (
     <div className="layout">
@@ -37,13 +55,22 @@ const Sidebar: React.FC<SidebarProps> = () => {
         </nav>
       </div>
       <div className="main-content">
-      <div className='topHeader'>
-      <button className="toggle-btn" onClick={toggleSidebar}>
-        {collapsed ? <FaBars /> : <FaChevronLeft />}
-      </button>
-      <LogoutButton />
+        <Header
+          shipperName="Enercross LLC"
+          shipperId="078711334"
+          userName="Shubham Saxena"
+          onManageSecurity={handleManageSecurity}
+          onChangePassword={handleChangePassword}
+          onLogout={handleLogout}
+        />
+        <div className='topHeader'>
+          <div className='togBtn'>
+            <button className="toggle-btn" onClick={toggleSidebar}>
+              {collapsed ? <FaBars /> : <FaChevronLeft />}
+            </button>
+          </div>
         </div>
-      <Outlet />
+        <Outlet />
       </div>
     </div>
   );

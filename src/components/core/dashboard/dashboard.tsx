@@ -189,7 +189,7 @@ const Dashboard: React.FC = () => {
         {/* Critical Notices - 1*/}
         <div key="critical-notices" className="grid-item">
           <div className="item-header">
-            <div className='draggable-handle col-8'>
+            <div className='draggable-handle '>
               Critical Notices
             </div>
             <div>
@@ -251,7 +251,7 @@ const Dashboard: React.FC = () => {
         {/* Non-Critical Notices - 2*/}
         <div key="non-critical-notices" className="grid-item">
           <div className=" item-header">
-            <div className='draggable-handle col-8'>
+            <div className='draggable-handle '>
               Non-Critical Notices
             </div>
             <div>
@@ -301,7 +301,7 @@ const Dashboard: React.FC = () => {
         {/* Notices 3*/}
         <div key="notices-3" className="grid-item">
           <div className=" item-header">
-            <div className='draggable-handle col-8'>
+            <div className='draggable-handle '>
               Notices 3
             </div>
             <div>
@@ -351,7 +351,7 @@ const Dashboard: React.FC = () => {
         {/* Notices 4*/}
         <div key="notices-4" className="grid-item">
           <div className=" item-header">
-            <div className='draggable-handle col-8'>
+            <div className='draggable-handle '>
               Notices 4
             </div>
             <div>
@@ -401,7 +401,7 @@ const Dashboard: React.FC = () => {
         {/* Notices 5*/}
         <div key="notices-5" className="grid-item">
           <div className=" item-header">
-            <div className='draggable-handle col-8'>
+            <div className='draggable-handle '>
               Notices 5
             </div>
             <div>
@@ -451,7 +451,7 @@ const Dashboard: React.FC = () => {
         {/*Notices 6*/}
         <div key="notices-6" className="grid-item">
           <div className=" item-header">
-            <div className='draggable-handle col-8'>
+            <div className='draggable-handle '>
               Notices 6
             </div>
             <div>
@@ -501,7 +501,7 @@ const Dashboard: React.FC = () => {
         {/* Notice 7*/}
         <div key="notices-7" className="grid-item">
           <div className=" item-header">
-            <div className='draggable-handle col-8'>
+            <div className='draggable-handle '>
               Notices 7
             </div>
             <div>
@@ -551,7 +551,7 @@ const Dashboard: React.FC = () => {
         {/*  Notices 8*/}
         <div key="notices-8" className="grid-item">
           <div className=" item-header">
-            <div className='draggable-handle col-8'>
+            <div className='draggable-handle '>
               Notices 8
             </div>
             <div>
