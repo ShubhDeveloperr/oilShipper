@@ -1,0 +1,11 @@
+.headerShipper {
+    font-size: 13px;
+    color: #333;
+  }
+
+.headerRight {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap; 
+  }
