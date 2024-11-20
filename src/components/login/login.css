@@ -31,7 +31,7 @@
 .inForm-group {
   margin-bottom: 20px;
   position: relative;
-  margin: 20px 20px 0px 20px !important;
+  margin: 20px 45px 0!important
 }
 
 .input-wrapper {
@@ -140,6 +140,6 @@
   cursor: pointer;
 }
 
-/* .login-btns{
-  width: 92%;
-} */
+.login-btns{
+  padding: 0px 45px;
+}

@@ -18,7 +18,6 @@ export const ProtectedRoute: React.FC = () => {
   return (
     <>
       <Sidebar activeRoute="dashboard" />
-      {/* <Outlet /> */}
     </>
   );
 };

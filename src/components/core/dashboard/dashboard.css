@@ -17,14 +17,15 @@
 }
 
 .grid-item {
-  background-color: #34495e;
+  /* background-color: #34495e; */
   color: white;
   border-radius: 3px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  height: auto !important;
+  border: 1px solid #34495e;
+  /* height: auto !important; */
 }
 
 .draggable-handle {
@@ -66,12 +67,12 @@
 
 .list-content {
   padding: 10px;
-  border: 1px solid #34495e; 
+   
   background-color: white;
 }
 
 .table-container {
-  max-height: 300px; 
+  max-height: 312px; 
   overflow-y: auto;
 }
 
@@ -108,8 +109,6 @@ table td {
   color: #ecf0f1; 
 }
 
-
-/* Responsive Styles */
 @media (max-width: 1200px) {
   .controls {
     text-align: center;

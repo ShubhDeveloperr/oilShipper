@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { FaBars, FaChevronLeft, FaTachometerAlt, FaList, FaFileAlt, FaRegNewspaper, FaTicketAlt } from 'react-icons/fa';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import './sidebar.css';
-// import LogoutButton from '../Logout/logout';
 import Header from '../Header/header';
 import { logout } from '../../../store/authSlice';
 import { useDispatch } from 'react-redux';
+import Footer from '../Footer/footer';
 
 type SidebarProps = {
   activeRoute: string;
@@ -55,6 +55,7 @@ const Sidebar: React.FC<SidebarProps> = () => {
         </nav>
       </div>
       <div className="main-content">
+        {/* //header */}
         <Header
           shipperName="Enercross LLC"
           shipperId="078711334"
@@ -63,6 +64,7 @@ const Sidebar: React.FC<SidebarProps> = () => {
           onChangePassword={handleChangePassword}
           onLogout={handleLogout}
         />
+        {/* toggle button */}
         <div className='topHeader'>
           <div className='togBtn'>
             <button className="toggle-btn" onClick={toggleSidebar}>
@@ -70,7 +72,12 @@ const Sidebar: React.FC<SidebarProps> = () => {
             </button>
           </div>
         </div>
+        {/* Routes all screens */}
         <Outlet />
+        {/* footer */}
+        <div className='foo-ter'>
+        <Footer />
+        </div>
       </div>
     </div>
   );

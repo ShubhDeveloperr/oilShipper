@@ -13,7 +13,6 @@
     animation: fadeIn 0.3s forwards;
   }
   
-  /* Modal Content */
   .cModal-content {
     position: relative;
     background: #ffffff !important;
@@ -25,7 +24,6 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
   
-  /* Close Button */
   .cModal-close-btn {
     position: absolute;
     top: 10px;
@@ -44,7 +42,7 @@
     color: #d5552c;
   }
   
-  /* Button Styling */
+
   .cModal-footer-btn {
     margin-top: 20px;
     padding: 10px 20px;
@@ -60,8 +58,7 @@
   .cModal-footer-btn:hover {
     background-color: #d5552c;
   }
-  
-  /* Fade-in animation */
+
   @keyframes fadeIn {
     from {
       opacity: 0;

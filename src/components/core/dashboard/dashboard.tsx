@@ -29,31 +29,31 @@ interface Notice {
 // Define layout presets
 const predefinedLayouts = {
   default: [
-    { i: 'critical-notices', x: 0, y: 10, w: 6, h: 10 },
-    { i: 'non-critical-notices', x: 6, y: 10, w: 6, h: 10 },
-    { i: 'notices-3', x: 0, y: 10, w: 6, h: 10 },
-    { i: 'notices-4', x: 6, y: 10, w: 6, h: 10 },
-    { i: 'notices-5', x: 0, y: 20, w: 6, h: 10 },
+    { i: 'Nominations', x: 0, y: 10, w: 6, h: 10 },
+    { i: 'Schedules', x: 6, y: 10, w: 6, h: 10 },
+    { i: 'Tickets', x: 0, y: 10, w: 6, h: 10 },
+    { i: 'PTOs', x: 6, y: 10, w: 6, h: 10 },
+    { i: 'Third Party Tickets', x: 0, y: 20, w: 6, h: 10 },
     { i: 'notices-6', x: 6, y: 20, w: 6, h: 10 },
     { i: 'notices-7', x: 0, y: 30, w: 6, h: 10 },
     { i: 'notices-8', x: 6, y: 30, w: 6, h: 10 },
   ],
   compact: [
-    { i: 'critical-notices', x: 0, y: 0, w: 12, h: 5 },
-    { i: 'non-critical-notices', x: 0, y: 5, w: 12, h: 5 },
-    { i: 'notices-3', x: 0, y: 10, w: 12, h: 5 },
-    { i: 'notices-4', x: 0, y: 15, w: 12, h: 5 },
-    { i: 'notices-5', x: 0, y: 20, w: 12, h: 5 },
+    { i: 'Nominations', x: 0, y: 0, w: 12, h: 5 },
+    { i: 'Schedules', x: 0, y: 5, w: 12, h: 5 },
+    { i: 'Tickets', x: 0, y: 10, w: 12, h: 5 },
+    { i: 'PTOs', x: 0, y: 15, w: 12, h: 5 },
+    { i: 'Third Party Tickets', x: 0, y: 20, w: 12, h: 5 },
     { i: 'notices-6', x: 0, y: 25, w: 12, h: 5 },
     { i: 'notices-7', x: 0, y: 30, w: 12, h: 5 },
     { i: 'notices-8', x: 0, y: 35, w: 12, h: 5 },
   ],
   grid: [
-    { i: 'critical-notices', x: 0, y: 0, w: 4, h: 5 },
-    { i: 'non-critical-notices', x: 4, y: 0, w: 4, h: 5 },
-    { i: 'notices-3', x: 8, y: 0, w: 4, h: 5 },
-    { i: 'notices-4', x: 0, y: 5, w: 4, h: 5 },
-    { i: 'notices-5', x: 4, y: 5, w: 4, h: 5 },
+    { i: 'Nominations', x: 0, y: 0, w: 4, h: 5 },
+    { i: 'Schedules', x: 4, y: 0, w: 4, h: 5 },
+    { i: 'Tickets', x: 8, y: 0, w: 4, h: 5 },
+    { i: 'PTOs', x: 0, y: 5, w: 4, h: 5 },
+    { i: 'Third Party Tickets', x: 4, y: 5, w: 4, h: 5 },
     { i: 'notices-6', x: 8, y: 5, w: 4, h: 5 },
     { i: 'notices-7', x: 0, y: 10, w: 4, h: 5 },
     { i: 'notices-8', x: 4, y: 10, w: 4, h: 5 },
@@ -94,11 +94,11 @@ const criticalNoticesData: Notice[] = [
 
 const Dashboard: React.FC = () => {
   // const [layout, setLayout] = useState<Layout[]>([
-    //   { i: 'critical-notices', x: 0, y: 0, w: 6, h: 10 },
-    //   { i: 'non-critical-notices', x: 6, y: 0, w: 6, h: 10 },
-    //   { i: 'notices-3', x: 0, y: 0, w: 6, h: 10 },
-    //   { i: 'notices-4', x: 6, y: 0, w: 6, h: 10 },
-    //   { i: 'notices-5', x: 0, y: 0, w: 6, h: 10 },
+    //   { i: 'Nominations', x: 0, y: 0, w: 6, h: 10 },
+    //   { i: 'Schedules', x: 6, y: 0, w: 6, h: 10 },
+    //   { i: 'Tickets', x: 0, y: 0, w: 6, h: 10 },
+    //   { i: 'PTOs', x: 6, y: 0, w: 6, h: 10 },
+    //   { i: 'Third Party Tickets', x: 0, y: 0, w: 6, h: 10 },
     //   { i: 'notices-6', x: 6, y: 0, w: 6, h: 10 },
     //   { i: 'notices-7', x: 0, y: 0, w: 6, h: 10 },
     //   { i: 'notices-8', x: 6, y: 0, w: 6, h: 10 },
@@ -186,11 +186,11 @@ const Dashboard: React.FC = () => {
         draggableHandle=".draggable-handle"
         onBreakpointChange={onBreakpointChange}
       >
-        {/* Critical Notices - 1*/}
-        <div key="critical-notices" className="grid-item">
+        {/* Nominations - 1*/}
+        <div key="Nominations" className="grid-item">
           <div className="item-header">
             <div className='draggable-handle '>
-              Critical Notices
+              Nominations
             </div>
             <div>
               <Select
@@ -248,11 +248,11 @@ const Dashboard: React.FC = () => {
           </div>
         </div>
 
-        {/* Non-Critical Notices - 2*/}
-        <div key="non-critical-notices" className="grid-item">
+        {/* Schedules - 2*/}
+        <div key="Schedules" className="grid-item">
           <div className=" item-header">
             <div className='draggable-handle '>
-              Non-Critical Notices
+            Schedules
             </div>
             <div>
               <Select
@@ -298,11 +298,11 @@ const Dashboard: React.FC = () => {
             </div>
           </div>
         </div>
-        {/* Notices 3*/}
-        <div key="notices-3" className="grid-item">
+        {/* Tickets - 3*/}
+        <div key="Tickets" className="grid-item">
           <div className=" item-header">
             <div className='draggable-handle '>
-              Notices 3
+              Tickets
             </div>
             <div>
               <Select
@@ -348,11 +348,11 @@ const Dashboard: React.FC = () => {
             </div>
           </div>
         </div>
-        {/* Notices 4*/}
-        <div key="notices-4" className="grid-item">
+        {/* PTOs - 4*/}
+        <div key="PTOs" className="grid-item">
           <div className=" item-header">
             <div className='draggable-handle '>
-              Notices 4
+              Product Transfer Orders (PTOs)
             </div>
             <div>
               <Select
@@ -398,11 +398,11 @@ const Dashboard: React.FC = () => {
             </div>
           </div>
         </div>
-        {/* Notices 5*/}
-        <div key="notices-5" className="grid-item">
+        {/* Third Party Tickets - 5*/}
+        <div key="Third Party Tickets" className="grid-item">
           <div className=" item-header">
             <div className='draggable-handle '>
-              Notices 5
+              Third Party Tickets
             </div>
             <div>
               <Select
@@ -448,156 +448,7 @@ const Dashboard: React.FC = () => {
             </div>
           </div>
         </div>
-        {/*Notices 6*/}
-        <div key="notices-6" className="grid-item">
-          <div className=" item-header">
-            <div className='draggable-handle '>
-              Notices 6
-            </div>
-            <div>
-              <Select
-                isMulti
-                options={pipelineOptions2}
-                value={selectedPipelines2}
-                onChange={handlePipelineChange2}
-                className="pipeline-select"
-                placeholder="Search Pipeline"
-                closeMenuOnSelect={false}
-                hideSelectedOptions={false}
-                isSearchable
-                styles={colourStyles}
-                // components={{
-                //   DropdownIndicator : () => < BiSearch />,
-                // }}
-              />
-            </div>
-            <div>
-            <FaTimes className="notice-close-btn" aria-label="Close" />
-          </div>
-          </div>
-          <div className="list-content draggable-handle">
-            <div className="table-container">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Pipeline</th>
-                    <th>Subject</th>
-                    <th>Date</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {criticalNoticesData.map((notice, index) => (
-                    <tr key={index}>
-                      <td>{notice.pipeline}</td>
-                      <td>{notice.subject}</td>
-                      <td>{notice.date}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-        {/* Notice 7*/}
-        <div key="notices-7" className="grid-item">
-          <div className=" item-header">
-            <div className='draggable-handle '>
-              Notices 7
-            </div>
-            <div>
-              <Select
-                isMulti
-                options={pipelineOptions2}
-                value={selectedPipelines2}
-                onChange={handlePipelineChange2}
-                className="pipeline-select"
-                placeholder="Search Pipeline"
-                closeMenuOnSelect={false}
-                hideSelectedOptions={false}
-                isSearchable
-                styles={colourStyles}
-                // components={{
-                //   DropdownIndicator : () => < BiSearch />,
-                // }}
-              />
-            </div>
-            <div>
-            <FaTimes className="notice-close-btn" aria-label="Close" />
-          </div>
-          </div>
-          <div className="list-content draggable-handle">
-            <div className="table-container">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Pipeline</th>
-                    <th>Subject</th>
-                    <th>Date</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {criticalNoticesData.map((notice, index) => (
-                    <tr key={index}>
-                      <td>{notice.pipeline}</td>
-                      <td>{notice.subject}</td>
-                      <td>{notice.date}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-        {/*  Notices 8*/}
-        <div key="notices-8" className="grid-item">
-          <div className=" item-header">
-            <div className='draggable-handle '>
-              Notices 8
-            </div>
-            <div>
-              <Select
-                isMulti
-                options={pipelineOptions2}
-                value={selectedPipelines2}
-                onChange={handlePipelineChange2}
-                className="pipeline-select"
-                placeholder="Search Pipeline"
-                closeMenuOnSelect={false}
-                hideSelectedOptions={false}
-                isSearchable
-                styles={colourStyles}
-                // components={{
-                //   DropdownIndicator : () => < BiSearch />,
-                // }}
-              />
-            </div>
-            <div>
-            <FaTimes className="notice-close-btn" aria-label="Close" />
-          </div>
-          </div>
-          <div className="list-content draggable-handle">
-            <div className="table-container">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Pipeline</th>
-                    <th>Subject</th>
-                    <th>Date</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {criticalNoticesData.map((notice, index) => (
-                    <tr key={index}>
-                      <td>{notice.pipeline}</td>
-                      <td>{notice.subject}</td>
-                      <td>{notice.date}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
+      
       </ResponsiveGridLayout>
     </div>
   );
