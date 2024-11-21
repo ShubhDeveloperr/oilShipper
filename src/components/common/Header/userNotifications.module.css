@@ -1,6 +1,7 @@
-.headerRight {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    flex-wrap: wrap; 
+  .headerIcon {
+    padding: 5px 10px;
+    background-color: #ff6c3a;
+    color: #fff;
+    border-radius: 4px;
+    font-size: 14px;
   }
