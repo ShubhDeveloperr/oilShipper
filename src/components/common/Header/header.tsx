@@ -1,7 +1,7 @@
 import "./header.css";
 import ShipperDropdown from "./shipperDropDown";
 import UserNotifications from "./userNotifications";
-import UserProfile  from "./userProfile";
+import UserProfile from "./userProfile";
 
 type HeaderProps = {
   shipperName: string;
