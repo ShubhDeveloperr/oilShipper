@@ -34,24 +34,12 @@
   cursor: pointer;
 }
 
-.header-right {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  flex-wrap: wrap; 
-}
-
 .header-icon {
   padding: 5px 10px;
   background-color: #ff6c3a;
   color: #fff;
   border-radius: 4px;
   font-size: 13px;
-}
-
-.header-shipper {
-  font-size: 13px;
-  color: #333;
 }
 
 .header-dropdown {
