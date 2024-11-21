@@ -128,13 +128,13 @@ const Dashboard: React.FC = () => {
     setLayout(newLayout);
   };
 
-  const handleLayoutSelect = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedLayout = event.target.value;
-    setLayout(
-      predefinedLayouts[selectedLayout as keyof typeof predefinedLayouts]
-    );
-    setLayoutType(selectedLayout);
-  };
+  // const handleLayoutSelect = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  //   const selectedLayout = event.target.value;
+  //   setLayout(
+  //     predefinedLayouts[selectedLayout as keyof typeof predefinedLayouts]
+  //   );
+  //   setLayoutType(selectedLayout);
+  // };
 
   const handlePipelineChange = (
     selectedOptions: MultiValue<PipelineOption> | SingleValue<PipelineOption>

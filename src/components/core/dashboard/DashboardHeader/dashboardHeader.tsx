@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Responsive, WidthProvider, Layout } from "react-grid-layout";
+import { Layout } from "react-grid-layout";
 
 export default function DashboardHeader() {
   const predefinedLayouts = {
@@ -42,7 +42,9 @@ export default function DashboardHeader() {
       predefinedLayouts[selectedLayout as keyof typeof predefinedLayouts]
     );
     setLayoutType(selectedLayout);
+    console.log("Layout selected", layout);
   };
+
 
   return (
     <div className="d-flex justify-content-between ">
