@@ -69,7 +69,7 @@ nav ul li a {
   color: white;
   display: flex;
   align-items: center;
-  font-size: 13px;
+  font-size: 14px;
   transition: color 0.3s;
   padding: 14px 10px 14px 18px !important;
   gap: 10px;

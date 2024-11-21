@@ -204,6 +204,8 @@ const Dashboard: React.FC = () => {
 
   return (
     <div className="dashboard-container">
+      <div className="d-flex justify-content-between ">
+
       <div className="header-left">
         <input
           type="text"
@@ -222,6 +224,7 @@ const Dashboard: React.FC = () => {
           <option value="compact">Compact Layout</option>
           <option value="grid">Grid Layout</option>
         </select>
+      </div>
       </div>
 
       <ResponsiveGridLayout
