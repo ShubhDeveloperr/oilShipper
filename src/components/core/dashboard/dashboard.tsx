@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import { Responsive, WidthProvider, Layout } from "react-grid-layout";
-import Select, { MultiValue, SingleValue } from "react-select";
+import { MultiValue, SingleValue } from "react-select";
 import "./dashboard.css";
-import { colourStyles } from "../../../helpers/styles/dropdown";
-import { FaTimes } from "react-icons/fa";
+// import { colourStyles } from "../../../helpers/styles/dropdown";
+// import { FaTimes } from "react-icons/fa";
+import DashboardTableWrapper from "../../../helpers/elements/DashboardTableWrapper/dashboardTableWrapper";
+// import { Icon } from "@fortawesome/fontawesome-svg-core";
+import { nominationTable, ptoSTable, schedulesTable, thirdPartyTicketTable, ticketsTable } from "../../../helpers/interfaces/interfaces";
+import { FaCheck } from "react-icons/fa";
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
 
@@ -12,21 +16,111 @@ interface PipelineOption {
   label: string;
 }
 
-interface Notice {
-  pipeline: string;
-  subject: string;
-  date: string;
-}
-
-// const ResponsiveGridLayout = WidthProvider(Responsive);
-
-// interface LayoutOption {
-//   value: string;
-//   label: React.ReactNode; // Allows embedding images/icons as labels
-//   layout: Layout[];
+// interface Notice {
+//   pipeline: string;
+//   subject: string;
+//   date: string;
 // }
 
-// Define layout presets
+const nominationsData:nominationTable[] = [
+  {
+    batchCode: "BCH001",
+    scheduled: <FaCheck color="green" />,
+    ticketed: <FaCheck color="green" />,
+    volume: "1000",
+    projected: "1200",
+    location: "Warehouse A",
+    tank: "Tank 1",
+    details: "Details about BCH001",
+    events: "Event A",
+    grantedTo: "John Doe",
+    supplierConsignee: "Supplier A / Consignee B",
+    tankage: "Tank Info",
+    carrierStatus: <FaCheck color="green" />,
+  },
+  {
+    batchCode: "BCH002",
+    scheduled: <FaCheck color="green" />,
+    ticketed: <FaCheck color="green" />,
+    volume: "800",
+    projected: "950",
+    location: "Warehouse B",
+    tank: "Tank 2",
+    details: "Details about BCH002",
+    events: "Event B",
+    grantedTo: "Jane Doe",
+    supplierConsignee: "Supplier X / Consignee Y",
+    tankage: "Tank Info",
+    carrierStatus: <FaCheck color="green" />,
+  },
+];
+
+const schedulesData:schedulesTable[] = [
+  {
+    line: "Line 1",
+    startDate: "2024-11-01",
+    batchCode: "BCH001",
+    location: "Warehouse A",
+    tankage: "Tank Info",
+    grantedTo: "John Doe",
+    volume: "1000",
+    ticketed: <FaCheck color="green" />,
+    action: "Approve",
+    dateCreated: "2024-10-15",
+    createdBy: "Admin",
+  },
+];
+
+const ticketsData:ticketsTable[] = [
+  {
+    batchCode: "BCH001",
+    date: "2024-11-01",
+    ticket: "TCK001",
+    volume: "1000",
+    grantedBy: "Admin",
+    grantedTo: "John Doe",
+    event: "Event A",
+    location: "Warehouse A",
+    supplier: "Supplier X",
+    consignee: "Consignee Y",
+    tankage: "Tank Info",
+    externalBatchID: "EXT001",
+  },
+];
+
+const ptosData:ptoSTable[] = [
+  {
+    pto: "PTO001",
+    type: "Transfer",
+    volume: "500",
+    fromShipper: "Shipper A",
+    toShipper: "Shipper B",
+    carrierStatus: <FaCheck color="green" />,
+    fromShipperStatus: "Ready",
+    toShipperStatus: "In Transit",
+    requestedDate: "2024-10-25",
+    fromBatchCode: "BCH001",
+    toBatchCode: "BCH002",
+    daysToExpire: "5",
+  },
+];
+
+const thirdPartyTicketsData:thirdPartyTicketTable[] = [
+  {
+    grantReject: "Granted",
+    batchCode: "BCH001",
+    location: "Warehouse A",
+    tankage: "Tank Info",
+    grantedBy: "Admin",
+    grantedTo: "Third Party",
+    daysToExpire: "10",
+    ticket: "TCK001",
+    nomination: "Nom001",
+    schedule: "Sched001",
+    tickets: "5",
+  },
+];
+
 const predefinedLayouts = {
   default: [
     { i: "Nominations", x: 0, y: 10, w: 6, h: 10 },
@@ -34,9 +128,6 @@ const predefinedLayouts = {
     { i: "Tickets", x: 0, y: 10, w: 6, h: 10 },
     { i: "PTOs", x: 6, y: 10, w: 6, h: 10 },
     { i: "Third Party Tickets", x: 0, y: 20, w: 6, h: 10 },
-    { i: "notices-6", x: 6, y: 20, w: 6, h: 10 },
-    { i: "notices-7", x: 0, y: 30, w: 6, h: 10 },
-    { i: "notices-8", x: 6, y: 30, w: 6, h: 10 },
   ],
   compact: [
     { i: "Nominations", x: 0, y: 0, w: 12, h: 5 },
@@ -44,9 +135,6 @@ const predefinedLayouts = {
     { i: "Tickets", x: 0, y: 10, w: 12, h: 5 },
     { i: "PTOs", x: 0, y: 15, w: 12, h: 5 },
     { i: "Third Party Tickets", x: 0, y: 20, w: 12, h: 5 },
-    { i: "notices-6", x: 0, y: 25, w: 12, h: 5 },
-    { i: "notices-7", x: 0, y: 30, w: 12, h: 5 },
-    { i: "notices-8", x: 0, y: 35, w: 12, h: 5 },
   ],
   grid: [
     { i: "Nominations", x: 0, y: 0, w: 4, h: 5 },
@@ -54,9 +142,6 @@ const predefinedLayouts = {
     { i: "Tickets", x: 8, y: 0, w: 4, h: 5 },
     { i: "PTOs", x: 0, y: 5, w: 4, h: 5 },
     { i: "Third Party Tickets", x: 4, y: 5, w: 4, h: 5 },
-    { i: "notices-6", x: 8, y: 5, w: 4, h: 5 },
-    { i: "notices-7", x: 0, y: 10, w: 4, h: 5 },
-    { i: "notices-8", x: 4, y: 10, w: 4, h: 5 },
   ],
 };
 
@@ -75,64 +160,7 @@ const pipelineOptions2: PipelineOption[] = [
   { value: "alliance-pipeline", label: "Alliance Pipeline L.P. (809785713)" },
 ];
 
-// Simulate hardcoded data (API response)
-const criticalNoticesData: Notice[] = [
-  {
-    pipeline: "AGT",
-    subject: "Operational Flow Order",
-    date: "9/20/2024 3:00 PM",
-  },
-  {
-    pipeline: "AGT",
-    subject: "Pipeline Conditions for 9/18/2024",
-    date: "9/17/2024 3:30 PM",
-  },
-  {
-    pipeline: "AGT",
-    subject: "Routine Maintenance Notice",
-    date: "9/15/2024 10:00 AM",
-  },
-  {
-    pipeline: "AGT",
-    subject: "Update on Maintenance Schedule",
-    date: "9/10/2024 2:00 PM",
-  },
-  {
-    pipeline: "AGT",
-    subject: "System Testing Alert",
-    date: "9/05/2024 1:30 PM",
-  },
-  {
-    pipeline: "AGT",
-    subject: "Emergency Flow Restriction",
-    date: "9/01/2024 9:00 AM",
-  },
-  { pipeline: "AGT", subject: "Inspection Alert", date: "8/30/2024 5:00 PM" },
-  {
-    pipeline: "AGT",
-    subject: "Weather-Related Delay",
-    date: "8/25/2024 12:00 PM",
-  },
-  {
-    pipeline: "AGT",
-    subject: "Pipeline Safety Inspection",
-    date: "8/20/2024 8:00 AM",
-  },
-  { pipeline: "AGT", subject: "Upgrade Notice", date: "8/15/2024 6:00 PM" },
-];
-
 const Dashboard: React.FC = () => {
-  // const [layout, setLayout] = useState<Layout[]>([
-  //   { i: 'Nominations', x: 0, y: 0, w: 6, h: 10 },
-  //   { i: 'Schedules', x: 6, y: 0, w: 6, h: 10 },
-  //   { i: 'Tickets', x: 0, y: 0, w: 6, h: 10 },
-  //   { i: 'PTOs', x: 6, y: 0, w: 6, h: 10 },
-  //   { i: 'Third Party Tickets', x: 0, y: 0, w: 6, h: 10 },
-  //   { i: 'notices-6', x: 6, y: 0, w: 6, h: 10 },
-  //   { i: 'notices-7', x: 0, y: 0, w: 6, h: 10 },
-  //   { i: 'notices-8', x: 6, y: 0, w: 6, h: 10 },
-  // ]);
-
   const [layout, setLayout] = useState<Layout[]>(predefinedLayouts.default);
   const [layoutType, setLayoutType] = useState<string>("default");
   const [selectedPipelines, setSelectedPipelines] = useState<
@@ -165,12 +193,6 @@ const Dashboard: React.FC = () => {
   ) => {
     setSelectedPipelines2(selectedOptions as MultiValue<PipelineOption>);
   };
-  // const loadPipelineOptions = async (inputValue: string) => {
-  //   const filteredOptions = pipelineOptions.filter((option) =>
-  //     option.label.toLowerCase().includes(inputValue.toLowerCase())
-  //   );
-  //   return filteredOptions;
-  // };
 
   const getRowHeight = () => {
     switch (layoutType) {
@@ -206,25 +228,25 @@ const Dashboard: React.FC = () => {
     <div className="dashboard-container">
       <div className="d-flex justify-content-between ">
 
-      <div className="header-left">
-        <input
-          type="text"
-          placeholder="Batch Code"
-          className="batch-code-input"
-        />
-        <button className="batch-search-btn">Batch Search</button>
-      </div>
-      <div className="controls">
-        <select
-          className="layout-select"
-          value={layoutType}
-          onChange={handleLayoutSelect}
-        >
-          <option value="default">Default Layout</option>
-          <option value="compact">Compact Layout</option>
-          <option value="grid">Grid Layout</option>
-        </select>
-      </div>
+        <div className="header-left">
+          <input
+            type="text"
+            placeholder="Batch Code"
+            className="batch-code-input"
+          />
+          <button className="batch-search-btn">Batch Search</button>
+        </div>
+        <div className="controls">
+          <select
+            className="layout-select"
+            value={layoutType}
+            onChange={handleLayoutSelect}
+          >
+            <option value="default">Default Layout</option>
+            <option value="compact">Compact Layout</option>
+            <option value="grid">Grid Layout</option>
+          </select>
+        </div>
       </div>
 
       <ResponsiveGridLayout
@@ -238,260 +260,61 @@ const Dashboard: React.FC = () => {
         draggableHandle=".draggable-handle"
         onBreakpointChange={onBreakpointChange}
       >
-        {/* Nominations - 1*/}
         <div key="Nominations" className="grid-item">
-          <div className="item-header">
-            <div className="draggable-handle ">Nominations</div>
-            <div>
-              <Select
-                isMulti
-                options={pipelineOptions}
-                value={selectedPipelines}
-                onChange={handlePipelineChange}
-                className="pipeline-select"
-                placeholder="Search Pipeline"
-                closeMenuOnSelect={false}
-                hideSelectedOptions={false}
-                isSearchable
-                styles={colourStyles}
-                // components={{
-                //   DropdownIndicator : () => < BiSearch />,
-                // }}
-              />
-              {/* <AsyncSelect
-                isMulti
-                loadOptions={loadPipelineOptions}
-                value={selectedPipelines}
-                onChange={handlePipelineChange}
-                className="pipeline-select"
-                placeholder="Select Pipeline"
-                closeMenuOnSelect={false}
-                hideSelectedOptions={false}
-                isSearchable
-              /> */}
-            </div>
-            <div>
-              <FaTimes className="notice-close-btn" aria-label="Close" />
-            </div>
-          </div>
-          <div className="list-content draggable-handle">
-            <div className="table-container">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Pipeline</th>
-                    <th>Subject</th>
-                    <th>Date</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {criticalNoticesData.map((notice, index) => (
-                    <tr key={index}>
-                      <td>{notice.pipeline}</td>
-                      <td>{notice.subject}</td>
-                      <td>{notice.date}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
+          <DashboardTableWrapper
+            key="Nominations"
+            title="Nominations"
+            pipelineOptions={pipelineOptions}
+            selectedPipelines={selectedPipelines}
+            handlePipelineChange={handlePipelineChange}
+            tableData={nominationsData}
+          />
         </div>
 
-        {/* Schedules - 2*/}
         <div key="Schedules" className="grid-item">
-          <div className=" item-header">
-            <div className="draggable-handle ">Schedules</div>
-            <div>
-              <Select
-                isMulti
-                options={pipelineOptions2}
-                value={selectedPipelines2}
-                onChange={handlePipelineChange2}
-                className="pipeline-select"
-                placeholder="Search Pipeline"
-                closeMenuOnSelect={false}
-                hideSelectedOptions={false}
-                isSearchable
-                styles={colourStyles}
-                // components={{
-                //   DropdownIndicator : () => < BiSearch />,
-                // }}
-              />
-            </div>
-            <div>
-              <FaTimes className="notice-close-btn" aria-label="Close" />
-            </div>
-          </div>
-          <div className="list-content draggable-handle">
-            <div className="table-container">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Pipeline</th>
-                    <th>Subject</th>
-                    <th>Date</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {criticalNoticesData.map((notice, index) => (
-                    <tr key={index}>
-                      <td>{notice.pipeline}</td>
-                      <td>{notice.subject}</td>
-                      <td>{notice.date}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
+          <DashboardTableWrapper
+            key="Schedules"
+            title="Schedules"
+            pipelineOptions={pipelineOptions2}
+            selectedPipelines={selectedPipelines2}
+            handlePipelineChange={handlePipelineChange2}
+            tableData={schedulesData}
+          />
         </div>
-        {/* Tickets - 3*/}
+
         <div key="Tickets" className="grid-item">
-          <div className=" item-header">
-            <div className="draggable-handle ">Tickets</div>
-            <div>
-              <Select
-                isMulti
-                options={pipelineOptions2}
-                value={selectedPipelines2}
-                onChange={handlePipelineChange2}
-                className="pipeline-select"
-                placeholder="Search Pipeline"
-                closeMenuOnSelect={false}
-                hideSelectedOptions={false}
-                isSearchable
-                styles={colourStyles}
-                // components={{
-                //   DropdownIndicator : () => < BiSearch />,
-                // }}
-              />
-            </div>
-            <div>
-              <FaTimes className="notice-close-btn" aria-label="Close" />
-            </div>
-          </div>
-          <div className="list-content draggable-handle">
-            <div className="table-container">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Pipeline</th>
-                    <th>Subject</th>
-                    <th>Date</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {criticalNoticesData.map((notice, index) => (
-                    <tr key={index}>
-                      <td>{notice.pipeline}</td>
-                      <td>{notice.subject}</td>
-                      <td>{notice.date}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
+          <DashboardTableWrapper
+            key="Tickets"
+            title="Tickets"
+            pipelineOptions={pipelineOptions2}
+            selectedPipelines={selectedPipelines2}
+            handlePipelineChange={handlePipelineChange2}
+            tableData={ticketsData}
+          />
         </div>
-        {/* PTOs - 4*/}
+
         <div key="PTOs" className="grid-item">
-          <div className=" item-header">
-            <div className="draggable-handle ">
-              Product Transfer Orders (PTOs)
-            </div>
-            <div>
-              <Select
-                isMulti
-                options={pipelineOptions2}
-                value={selectedPipelines2}
-                onChange={handlePipelineChange2}
-                className="pipeline-select"
-                placeholder="Search Pipeline"
-                closeMenuOnSelect={false}
-                hideSelectedOptions={false}
-                isSearchable
-                styles={colourStyles}
-                // components={{
-                //   DropdownIndicator : () => < BiSearch />,
-                // }}
-              />
-            </div>
-            <div>
-              <FaTimes className="notice-close-btn" aria-label="Close" />
-            </div>
-          </div>
-          <div className="list-content draggable-handle">
-            <div className="table-container">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Pipeline</th>
-                    <th>Subject</th>
-                    <th>Date</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {criticalNoticesData.map((notice, index) => (
-                    <tr key={index}>
-                      <td>{notice.pipeline}</td>
-                      <td>{notice.subject}</td>
-                      <td>{notice.date}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
+          <DashboardTableWrapper
+            key="PTOs"
+            title="PTOs"
+            pipelineOptions={pipelineOptions2}
+            selectedPipelines={selectedPipelines2}
+            handlePipelineChange={handlePipelineChange2}
+            tableData={ptosData}
+          />
         </div>
-        {/* Third Party Tickets - 5*/}
+
         <div key="Third Party Tickets" className="grid-item">
-          <div className=" item-header">
-            <div className="draggable-handle ">Third Party Tickets</div>
-            <div>
-              <Select
-                isMulti
-                options={pipelineOptions2}
-                value={selectedPipelines2}
-                onChange={handlePipelineChange2}
-                className="pipeline-select"
-                placeholder="Search Pipeline"
-                closeMenuOnSelect={false}
-                hideSelectedOptions={false}
-                isSearchable
-                styles={colourStyles}
-                // components={{
-                //   DropdownIndicator : () => < BiSearch />,
-                // }}
-              />
-            </div>
-            <div>
-              <FaTimes className="notice-close-btn" aria-label="Close" />
-            </div>
-          </div>
-          <div className="list-content draggable-handle">
-            <div className="table-container">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Pipeline</th>
-                    <th>Subject</th>
-                    <th>Date</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {criticalNoticesData.map((notice, index) => (
-                    <tr key={index}>
-                      <td>{notice.pipeline}</td>
-                      <td>{notice.subject}</td>
-                      <td>{notice.date}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
+          <DashboardTableWrapper
+            key="Third Party Tickets"
+            title="PTOs"
+            pipelineOptions={pipelineOptions2}
+            selectedPipelines={selectedPipelines2}
+            handlePipelineChange={handlePipelineChange2}
+            tableData={thirdPartyTicketsData}
+          />
         </div>
+
       </ResponsiveGridLayout>
     </div>
   );
