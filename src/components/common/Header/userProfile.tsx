@@ -23,33 +23,33 @@ export default function UserProfile({
   return (
     <div className={styles.headerShipper}>
         <div className={styles.headerRight}>
-          <Dropdown align="end" className="header-dropdown">
+          <Dropdown align="end" className={styles.headerDropdown}>
             <Dropdown.Toggle
               variant="light"
               id="dropdown-basic"
-              className="header-dropdown-toggle"
+              className={styles.headerDropdownToggle}
             >
-              <span className="dropdown-title">
+              <span className={styles.dropdownTitle}>
                 Shipper: {shipperName || "Enercross LLC"} (
                 {shipperId || "078711334"})
               </span>
-              <FaUser className="user-icon" />
+              <FaUser className={styles.userIcon} />
             </Dropdown.Toggle>
-            <Dropdown.Menu className="header-dropdown-menu">
-              <div className="dropdown-user">
+            <Dropdown.Menu className={styles.headerDropdownMenu}>
+              <div className={styles.dropdownUser}>
                 <strong>{userName}</strong>
               </div>
-              <div className="dropdown-support">Support</div>
-              <div className="dropdown-item-all">
+              <div className={styles.dropdownSupport}>Support</div>
+              <div className={styles.dropdownItemAll}>
                 <Dropdown.Item
                   onClick={onManageSecurity}
-                  className="dropdown-item"
+                  className={styles.dropdownItem}
                 >
                   Manage Security
                 </Dropdown.Item>
                 <Dropdown.Item
                   onClick={onChangePassword}
-                  className="dropdown-item"
+                  className={styles.dropdownItem}
                 >
                   Change Password
                 </Dropdown.Item>
@@ -57,7 +57,7 @@ export default function UserProfile({
               <Dropdown.Divider />
               <Dropdown.Item
                 onClick={onLogout}
-                className="dropdown-item logout-item"
+                className={`${styles.dropdownItem} ${styles.dropdownLogout}`}
               >
                 Log Out
               </Dropdown.Item>

@@ -1,4 +1,4 @@
-import "./header.css";
+import Styles from "./header.module.css";
 import ShipperDropdown from "./shipperDropDown";
 import UserNotifications from "./userNotifications";
 import UserProfile  from "./userProfile";
@@ -21,9 +21,9 @@ const Header = ({
   onLogout,
 }: HeaderProps) => {
   return (
-    <div className="header-container">
+    <div className={Styles.headerContainer}>
       <ShipperDropdown />
-      <div className="header-right">
+      <div className={Styles.headerRight}>
         <UserNotifications />
         <UserProfile
           shipperName={shipperName}
