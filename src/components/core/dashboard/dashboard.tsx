@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import { Responsive, WidthProvider, Layout } from "react-grid-layout";
 import { MultiValue, SingleValue } from "react-select";
 import "./dashboard.css";
+
 // import { colourStyles } from "../../../helpers/styles/dropdown";
 // import { FaTimes } from "react-icons/fa";
 import DashboardTableWrapper from "../../../helpers/elements/DashboardTableWrapper/dashboardTableWrapper";
 // import { Icon } from "@fortawesome/fontawesome-svg-core";
 import { nominationTable, ptoSTable, schedulesTable, thirdPartyTicketTable, ticketsTable } from "../../../helpers/interfaces/interfaces";
 import { FaCheck } from "react-icons/fa";
+
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
 
@@ -21,6 +23,7 @@ interface PipelineOption {
 //   subject: string;
 //   date: string;
 // }
+
 
 const nominationsData:nominationTable[] = [
   {
@@ -121,6 +124,7 @@ const thirdPartyTicketsData:thirdPartyTicketTable[] = [
   },
 ];
 
+
 const predefinedLayouts = {
   default: [
     { i: "Nominations", x: 0, y: 10, w: 6, h: 10 },
@@ -175,13 +179,13 @@ const Dashboard: React.FC = () => {
     setLayout(newLayout);
   };
 
-  const handleLayoutSelect = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedLayout = event.target.value;
-    setLayout(
-      predefinedLayouts[selectedLayout as keyof typeof predefinedLayouts]
-    );
-    setLayoutType(selectedLayout);
-  };
+  // const handleLayoutSelect = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  //   const selectedLayout = event.target.value;
+  //   setLayout(
+  //     predefinedLayouts[selectedLayout as keyof typeof predefinedLayouts]
+  //   );
+  //   setLayoutType(selectedLayout);
+  // };
 
   const handlePipelineChange = (
     selectedOptions: MultiValue<PipelineOption> | SingleValue<PipelineOption>
@@ -226,6 +230,7 @@ const Dashboard: React.FC = () => {
 
   return (
     <div className="dashboard-container">
+
       <div className="d-flex justify-content-between ">
 
         <div className="header-left">
@@ -249,6 +254,7 @@ const Dashboard: React.FC = () => {
         </div>
       </div>
 
+
       <ResponsiveGridLayout
         className="layout"
         layouts={{ lg: layout }}
@@ -260,6 +266,7 @@ const Dashboard: React.FC = () => {
         draggableHandle=".draggable-handle"
         onBreakpointChange={onBreakpointChange}
       >
+
         <div key="Nominations" className="grid-item">
           <DashboardTableWrapper
             key="Nominations"

@@ -10,6 +10,7 @@
   .layout-select {
     padding: 8px;
     font-size: 14px;
+
   }
   
   .layout {
@@ -126,7 +127,7 @@
     border-radius: 4px;
     cursor: pointer;
   }
-  
+
   @media (max-width: 1200px) {
     .controls {
       text-align: center;
