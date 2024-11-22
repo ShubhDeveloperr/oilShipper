@@ -3,6 +3,9 @@ import Select, { MultiValue} from "react-select";
 import { FaTimes } from "react-icons/fa";
 import "./dashboardTableWrapper.css";
 
+import { nominationTable, ptoSTable, schedulesTable, thirdPartyTicketTable, ticketsTable } from "../../interfaces/interfaces";
+
+
 
 interface PipelineOption {
     value: string;
@@ -10,23 +13,27 @@ interface PipelineOption {
 }
 
 type TableWrapperProps = {
+  key:string;
   title: string;
-  pipelineOptions: any[];
+  pipelineOptions: {value:string; label:string}[];
   selectedPipelines: MultiValue<PipelineOption>;
-  handlePipelineChange: (selectedOptions: any) => void;
-  tableData: { pipeline: string; subject: string; date: string }[];
+  handlePipelineChange: (selectedOptions: MultiValue<PipelineOption>) => void;
+  tableData: nominationTable[] | schedulesTable[] | ticketsTable[] | ptoSTable[] | thirdPartyTicketTable[];
 };
 
 const DashboardTableWrapper: React.FC<TableWrapperProps> = ({
+  key,
   title,
   pipelineOptions,
   selectedPipelines,
   handlePipelineChange,
   tableData,
 }) => {
-    console.log({ title});
+    console.log({key});
+    const tableHeaders = tableData.length > 0 ? Object.keys(tableData[0]) : [];
+    const isRowObject = (row: object, key: string): boolean => key in row;
   return (
-    <div className="grid-item">
+    <div >
       <div className="item-header">
         <div className="draggable-handle">{title}</div>
         <div>
@@ -49,19 +56,23 @@ const DashboardTableWrapper: React.FC<TableWrapperProps> = ({
       <div className="list-content draggable-handle">
         <div className="table-container">
           <table>
-            <thead>
+          <thead>
               <tr>
-                <th>Pipeline</th>
-                <th>Subject</th>
-                <th>Date</th>
+                {tableHeaders.map((header) => (
+                  <th key={header}>{header}</th>
+                ))}
               </tr>
             </thead>
             <tbody>
               {tableData.map((row, index) => (
                 <tr key={index}>
-                  <td>{row.pipeline}</td>
-                  <td>{row.subject}</td>
-                  <td>{row.date}</td>
+                  {tableHeaders.map((header) => (
+                    <td key={header}>
+                        {/* {row[header]} */}
+                    {isRowObject(row, header) ? row[header as keyof typeof row] : null}
+                    </td>
+                  ))}
+
                 </tr>
               ))}
             </tbody>
