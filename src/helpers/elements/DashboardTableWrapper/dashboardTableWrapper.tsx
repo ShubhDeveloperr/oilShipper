@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import Select, { MultiValue } from "react-select";
-import { FaSortAlphaDownAlt, FaSortAlphaUp, FaTimes } from "react-icons/fa";
+import { FaSortAlphaDownAlt, FaSortAlphaUp } from "react-icons/fa";
 import styles from "./dashboardTableWrapper.module.css";
 import { nominationTable, ptoSTable, schedulesTable, thirdPartyTicketTable, ticketsTable } from "../../interfaces/DashboardInterfaces/dashboardWrapperInterface";
 import { RiDragMove2Fill } from "react-icons/ri";
+import { colourStyles } from "../../styles/dropdown";
+import { MdOutlineKeyboardDoubleArrowDown, MdOutlineKeyboardDoubleArrowUp } from "react-icons/md";
 
 
 
@@ -74,15 +76,17 @@ const DashboardTableWrapper: React.FC<TableWrapperProps> = ({
             options={pipelineOptions}
             value={selectedPipelines}
             onChange={handlePipelineChange}
-            // className="pipeline-select"
+            className="pipeline-select"
             placeholder="Search Pipeline"
             closeMenuOnSelect={false}
             hideSelectedOptions={false}
             isSearchable
+            styles={colourStyles}
           />
         </div>
         <div>
-          <FaTimes className={styles.noticeCloseBtn} aria-label="Close" />
+          <MdOutlineKeyboardDoubleArrowDown className={styles.noticeCloseBtn} aria-label="Close" />
+          <MdOutlineKeyboardDoubleArrowUp className={styles.noticeOpenBtn} aria-label="Close" />
         </div>
       </div>
       <div className={styles.listContent}>
