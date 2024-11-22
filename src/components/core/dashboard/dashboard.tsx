@@ -181,7 +181,7 @@ const Dashboard: React.FC = () => {
       predefinedLayouts[selectedLayout as keyof typeof predefinedLayouts]
     );
     setLayoutType(selectedLayout);
-  };
+  }; 
 
   const handlePipelineChange = (
     selectedOptions: MultiValue<PipelineOption> | SingleValue<PipelineOption>
