@@ -2,7 +2,9 @@ import React from "react";
 import Select, { MultiValue} from "react-select";
 import { FaTimes } from "react-icons/fa";
 import "./dashboardTableWrapper.css";
+
 import { nominationTable, ptoSTable, schedulesTable, thirdPartyTicketTable, ticketsTable } from "../../interfaces/interfaces";
+
 
 
 interface PipelineOption {
@@ -70,6 +72,7 @@ const DashboardTableWrapper: React.FC<TableWrapperProps> = ({
                     {isRowObject(row, header) ? row[header as keyof typeof row] : null}
                     </td>
                   ))}
+
                 </tr>
               ))}
             </tbody>
