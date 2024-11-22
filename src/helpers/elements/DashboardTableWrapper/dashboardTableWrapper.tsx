@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import Select, { MultiValue } from "react-select";
 import { FaSortAlphaDownAlt, FaSortAlphaUp, FaTimes } from "react-icons/fa";
-import "./dashboardTableWrapper.css";
-
+import styles from "./dashboardTableWrapper.module.css";
 import { nominationTable, ptoSTable, schedulesTable, thirdPartyTicketTable, ticketsTable } from "../../interfaces/DashboardInterfaces/dashboardWrapperInterface";
 import { RiDragMove2Fill } from "react-icons/ri";
 
@@ -60,12 +59,12 @@ const DashboardTableWrapper: React.FC<TableWrapperProps> = ({
 
   return (
     <div>
-      <div className="item-header">
-        <div className="d-flex gap-1">
-          <div className="dragIcon draggable-handle" >
+      <div className={styles.itemHeader}>
+        <div className={"d-flex gap-1"}>
+          <div className={`${styles.dragIcon} ${styles.draggableHandle}`} >
             <RiDragMove2Fill className="draggable-icon" />
           </div>
-          <div className="dragTitle">
+          <div className={styles.dragTitle}>
             {title}
           </div>
         </div>
@@ -75,7 +74,7 @@ const DashboardTableWrapper: React.FC<TableWrapperProps> = ({
             options={pipelineOptions}
             value={selectedPipelines}
             onChange={handlePipelineChange}
-            className="pipeline-select"
+            // className="pipeline-select"
             placeholder="Search Pipeline"
             closeMenuOnSelect={false}
             hideSelectedOptions={false}
@@ -83,11 +82,11 @@ const DashboardTableWrapper: React.FC<TableWrapperProps> = ({
           />
         </div>
         <div>
-          <FaTimes className="notice-close-btn" aria-label="Close" />
+          <FaTimes className={styles.noticeCloseBtn} aria-label="Close" />
         </div>
       </div>
-      <div className="list-content  ">
-        <div className="table-container">
+      <div className={styles.listContent}>
+        <div className={styles.tableContainer}>
           <table>
             <thead>
               <tr>
@@ -95,7 +94,7 @@ const DashboardTableWrapper: React.FC<TableWrapperProps> = ({
                   <th key={header} onClick={() => !excludedHeaders.includes(header) && handleSort(header)}>
                     {header}
                     {!excludedHeaders.includes(header) && (
-                      <span className="sort-icons">
+                      <span className={styles.sortIcons}>
                         {sortColumn === header && sortDirection === "asc" && (
                           <FaSortAlphaUp />
                         )}
@@ -109,17 +108,50 @@ const DashboardTableWrapper: React.FC<TableWrapperProps> = ({
                 ))}
               </tr>
             </thead>
-            <tbody>
+            {/* <tbody>
               {sortedTableData.map((row, index) => (
                 <tr key={index}>
                   {tableHeaders.map((header) => (
                     <td key={header}>
-                      {isRowObject(row, header) ? row[header as keyof typeof row] : null}
+                      {isRowObject(row, header) ? (
+                        row[header as keyof typeof row] || <span className={styles.emptyPlace}>-</span> 
+                      ) : (
+                        <span className={styles.emptyPlace}>-</span> 
+                      )}
                     </td>
                   ))}
                 </tr>
               ))}
+            </tbody> */}
+            <tbody>
+              {sortedTableData.map((row, index) => (
+                <tr key={`data-row-${index}`}>
+                  {tableHeaders.map((header) => (
+                    <td key={header}>
+                      {isRowObject(row, header) ? (
+                        row[header as keyof typeof row] || <span className={styles.emptyPlace}>-</span>
+                      ) : (
+                        <span className={styles.emptyPlace}>-</span>
+                      )}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+
+              {Array.from(
+                { length: Math.max(0, 7 - sortedTableData.length) },
+                (_, index) => (
+                  <tr key={`placeholder-row-${index}`}>
+                    {tableHeaders.map((header) => (
+                      <td key={header}>
+                        <span className={styles.emptyPlace}>-</span>
+                      </td>
+                    ))}
+                  </tr>
+                )
+              )}
             </tbody>
+
           </table>
         </div>
       </div>

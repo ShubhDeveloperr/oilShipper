@@ -1,0 +1,124 @@
+
+.dashboardContainer {
+  padding: 20px;
+}
+
+.controls {
+  margin-bottom: 10px;
+  text-align: right;
+}
+
+.layoutDropdown{
+  background-color: #ff6c3a !important;
+  color: #fff !important;
+  border-radius: 4px !important;
+  font-size: 14px !important;
+  border: 1px solid #ff6c3a !important;
+}
+.layoutDropdownItems:hover{
+  color: #ff6c3a !important;
+}
+.layoutDropdownItems:active {
+  background-color: #ff6c3a !important;
+  color: white !important;
+  
+}
+.layoutDropdownItems{
+  font-size: 14px !important;
+  color: black !important;
+}
+.layoutDropdownMenu{
+  font-size: 14px !important;
+  /* background-color: #ff6c3a !important; */
+  /* color: #fff !important; */
+}
+
+.layout {
+  background-color: #f5f5f5;
+}
+
+.gridItem {
+  /* background-color: #34495e; */
+  color: white;
+  border-radius: 3px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid #34495e;
+  /* height: auto !important; */
+}
+
+.draggablehandle {
+  cursor: grab;
+}
+
+.item-content {
+  padding: 10px;
+  overflow-y: auto;
+}
+
+.gridItem .list-item {
+  padding: 10px;
+  border-bottom: 1px solid #2c3e50;
+}
+
+.batchCodeInput {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  max-width: 150px; 
+  box-sizing: border-box;
+}
+
+.batchSearchBtn {
+  padding: 6px 12px;
+  background-color: #ff6c3a;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+@media (max-width: 1200px) {
+  .controls {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 992px) {
+  .gridItem {
+    width: 100%;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .layout {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+
+  .gridItem {
+    font-size: 12px;
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .controls {
+    text-align: center;
+  }
+
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .gridItem {
+    margin-bottom: 10px;
+    width: 100%;
+  }
+
+}
