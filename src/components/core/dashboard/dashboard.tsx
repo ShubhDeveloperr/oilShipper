@@ -2,12 +2,8 @@ import React, { useState } from "react";
 import { Responsive, WidthProvider, Layout } from "react-grid-layout";
 import { MultiValue, SingleValue } from "react-select";
 import "./dashboard.css";
-
-// import { colourStyles } from "../../../helpers/styles/dropdown";
-// import { FaTimes } from "react-icons/fa";
 import DashboardTableWrapper from "../../../helpers/elements/DashboardTableWrapper/dashboardTableWrapper";
-// import { Icon } from "@fortawesome/fontawesome-svg-core";
-import { nominationTable, ptoSTable, schedulesTable, thirdPartyTicketTable, ticketsTable } from "../../../helpers/interfaces/interfaces";
+import { nominationTable, ptoSTable, schedulesTable, thirdPartyTicketTable, ticketsTable } from "../../../helpers/interfaces/DashboardInterfaces/dashboardWrapperInterface";
 import { FaCheck } from "react-icons/fa";
 
 
@@ -18,109 +14,103 @@ interface PipelineOption {
   label: string;
 }
 
-// interface Notice {
-//   pipeline: string;
-//   subject: string;
-//   date: string;
-// }
-
 
 const nominationsData:nominationTable[] = [
   {
-    batchCode: "BCH001",
-    scheduled: <FaCheck color="green" />,
-    ticketed: <FaCheck color="green" />,
-    volume: "1000",
-    projected: "1200",
-    location: "Warehouse A",
-    tank: "Tank 1",
-    details: "Details about BCH001",
-    events: "Event A",
-    grantedTo: "John Doe",
-    supplierConsignee: "Supplier A / Consignee B",
-    tankage: "Tank Info",
-    carrierStatus: <FaCheck color="green" />,
+    "Batch Code": "BCH001",
+    "Scheduled": <FaCheck color="green" />,
+    "Ticketed": <FaCheck color="green" />,
+    "Volume": "1000",
+    "Projected": "1200",
+    "Location": "Warehouse A",
+    "Tank": "Tank 1",
+    "Details": "Details about BCH001",
+    "Events": "Event A",
+    "Granted To": "John Doe",
+    "Supplier Consignee": "Supplier A / Consignee B",
+    "Tankage": "Tank Info",
+    "Carrier Status": <FaCheck color="green" />,
   },
   {
-    batchCode: "BCH002",
-    scheduled: <FaCheck color="green" />,
-    ticketed: <FaCheck color="green" />,
-    volume: "800",
-    projected: "950",
-    location: "Warehouse B",
-    tank: "Tank 2",
-    details: "Details about BCH002",
-    events: "Event B",
-    grantedTo: "Jane Doe",
-    supplierConsignee: "Supplier X / Consignee Y",
-    tankage: "Tank Info",
-    carrierStatus: <FaCheck color="green" />,
+    "Batch Code": "BCH002",
+    "Scheduled": <FaCheck color="green" />,
+    "Ticketed": <FaCheck color="green" />,
+    "Volume": "800",
+    "Projected": "950",
+    "Location": "Warehouse B",
+    "Tank": "Tank 2",
+    "Details": "Details about BCH002",
+    "Events": "Event B",
+    "Granted To": "Jane Doe",
+    "Supplier Consignee": "Supplier X / Consignee Y",
+    "Tankage": "Tank Info",
+    "Carrier Status": <FaCheck color="green" />,
   },
 ];
 
 const schedulesData:schedulesTable[] = [
   {
-    line: "Line 1",
-    startDate: "2024-11-01",
-    batchCode: "BCH001",
-    location: "Warehouse A",
-    tankage: "Tank Info",
-    grantedTo: "John Doe",
-    volume: "1000",
-    ticketed: <FaCheck color="green" />,
-    action: "Approve",
-    dateCreated: "2024-10-15",
-    createdBy: "Admin",
+    "Line": "Line 1",
+    "Start Date": "2024-11-01",
+    "Batch Code": "BCH001",
+    "Location": "Warehouse A",
+    "Tankage": "Tank Info",
+    "Granted To": "John Doe",
+    "Volume": "1000",
+    "Ticketed": <FaCheck color="green" />,
+    "Action": "Approve",
+    "Date Created": "2024-10-15",
+    "Created By": "Admin",
   },
 ];
 
 const ticketsData:ticketsTable[] = [
   {
-    batchCode: "BCH001",
-    date: "2024-11-01",
-    ticket: "TCK001",
-    volume: "1000",
-    grantedBy: "Admin",
-    grantedTo: "John Doe",
-    event: "Event A",
-    location: "Warehouse A",
-    supplier: "Supplier X",
-    consignee: "Consignee Y",
-    tankage: "Tank Info",
-    externalBatchID: "EXT001",
+    "Batch Code": "BCH001",
+    "Date": "2024-11-01",
+    "Ticket": "TCK001",
+    "Volume": "1000",
+    "Granted By": "Admin",
+    "Granted To": "John Doe",
+    "Event": "Event A",
+    "Location": "Warehouse A",
+    "Supplier": "Supplier X",
+    "Consignee": "Consignee Y",
+    "Tankage": "Tank Info",
+    "External Batch ID": "EXT001",
   },
 ];
 
 const ptosData:ptoSTable[] = [
   {
-    pto: "PTO001",
-    type: "Transfer",
-    volume: "500",
-    fromShipper: "Shipper A",
-    toShipper: "Shipper B",
-    carrierStatus: <FaCheck color="green" />,
-    fromShipperStatus: "Ready",
-    toShipperStatus: "In Transit",
-    requestedDate: "2024-10-25",
-    fromBatchCode: "BCH001",
-    toBatchCode: "BCH002",
-    daysToExpire: "5",
+    "PTO": "PTO001",
+    "Type": "Transfer",
+    "Volume": "500",
+    "From Shipper": "Shipper A",
+    "To Shipper": "Shipper B",
+    "Carrier Status": <FaCheck color="green" />,
+    "From Shipper Status": "Ready",
+    "To Shipper Status": "In Transit",
+    "Requested Date": "2024-10-25",
+    "From Batch Code": "BCH001",
+    "To Batch Code": "BCH002",
+    "Days To Expire": "5",
   },
 ];
 
 const thirdPartyTicketsData:thirdPartyTicketTable[] = [
   {
-    grantReject: "Granted",
-    batchCode: "BCH001",
-    location: "Warehouse A",
-    tankage: "Tank Info",
-    grantedBy: "Admin",
-    grantedTo: "Third Party",
-    daysToExpire: "10",
-    ticket: "TCK001",
-    nomination: "Nom001",
-    schedule: "Sched001",
-    tickets: "5",
+    "Grant/Reject": "Granted",
+    "Batch Code": "BCH001",
+    "Location": "Warehouse A",
+    "Tankage": "Tank Info",
+    "Granted By": "Admin",
+    "Granted To": "Third Party",
+    "Days To Expire": "10",
+    "Ticket": "TCK001",
+    "Nomination": "Nom001",
+    "Schedule": "Sched001",
+    "Tickets": "5",
   },
 ];
 
@@ -211,10 +201,9 @@ const Dashboard: React.FC = () => {
 
   const onBreakpointChange = (newBreakpoint: string) => {
     if (newBreakpoint !== lastBreakpoint) {
-      setLastBreakpoint(newBreakpoint); // Update the last breakpoint
+      setLastBreakpoint(newBreakpoint); 
       console.log(`Changed to ${newBreakpoint} breakpoint`);
 
-      // Reset layout to the appropriate breakpoint layout when resizing
       if (newBreakpoint === "lg" || newBreakpoint === "md") {
         setLayout(predefinedLayouts.grid);
         setLayoutType("grid");
