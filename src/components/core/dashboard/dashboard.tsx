@@ -276,7 +276,7 @@ const Dashboard: React.FC = () => {
       >
 
         <div key="Nominations" className={`${styles.gridItem}`}>
-          <div className="draggableHandle">
+          <div className= "">
 
           <DashboardTableWrapper
             key="Nominations"
@@ -290,7 +290,7 @@ const Dashboard: React.FC = () => {
         </div>
 
         <div key="Schedules" className={styles.gridItem}>
-        <div className="draggableHandle">
+        <div className= "">
           <DashboardTableWrapper
             key="Schedules"
             title="Schedules"
@@ -303,7 +303,7 @@ const Dashboard: React.FC = () => {
         </div>
 
         <div key="Tickets" className={styles.gridItem}>
-        <div className="draggableHandle">
+        <div className= "">
           <DashboardTableWrapper
             key="Tickets"
             title="Tickets"
@@ -316,7 +316,7 @@ const Dashboard: React.FC = () => {
         </div>
 
         <div key="PTOs" className={styles.gridItem}>
-        <div className="draggableHandle">
+        <div className= "">
           <DashboardTableWrapper
             key="PTOs"
             title="PTOs"
@@ -329,7 +329,7 @@ const Dashboard: React.FC = () => {
         </div>
 
         <div key="Third Party Tickets" className={styles.gridItem}>
-        <div className="draggableHandle">
+        <div className= "">
           <DashboardTableWrapper
             key="Third Party Tickets"
             title="Third Party Tickets"
