@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { Responsive, WidthProvider, Layout } from "react-grid-layout";
 import { MultiValue, SingleValue } from "react-select";
-import "./dashboard.css";
+import styles from "./dashboard.module.css";
 import DashboardTableWrapper from "../../../helpers/elements/DashboardTableWrapper/dashboardTableWrapper";
 import { nominationTable, ptoSTable, schedulesTable, thirdPartyTicketTable, ticketsTable } from "../../../helpers/interfaces/DashboardInterfaces/dashboardWrapperInterface";
 import { FaCheck } from "react-icons/fa";
+import { Dropdown } from "react-bootstrap";
 
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
@@ -15,12 +16,12 @@ interface PipelineOption {
 }
 
 
-const nominationsData:nominationTable[] = [
+const nominationsData: nominationTable[] = [
   {
     "Batch Code": "BCH001",
     "Scheduled": <FaCheck color="green" />,
     "Ticketed": <FaCheck color="green" />,
-    "Volume": "1000",
+    "Volume": "",
     "Projected": "1200",
     "Location": "Warehouse A",
     "Tank": "Tank 1",
@@ -48,7 +49,7 @@ const nominationsData:nominationTable[] = [
   },
 ];
 
-const schedulesData:schedulesTable[] = [
+const schedulesData: schedulesTable[] = [
   {
     "Line": "Line 1",
     "Start Date": "2024-11-01",
@@ -64,7 +65,7 @@ const schedulesData:schedulesTable[] = [
   },
 ];
 
-const ticketsData:ticketsTable[] = [
+const ticketsData: ticketsTable[] = [
   {
     "Batch Code": "BCH001",
     "Date": "2024-11-01",
@@ -81,7 +82,7 @@ const ticketsData:ticketsTable[] = [
   },
 ];
 
-const ptosData:ptoSTable[] = [
+const ptosData: ptoSTable[] = [
   {
     "PTO": "PTO001",
     "Type": "Transfer",
@@ -98,7 +99,7 @@ const ptosData:ptoSTable[] = [
   },
 ];
 
-const thirdPartyTicketsData:thirdPartyTicketTable[] = [
+const thirdPartyTicketsData: thirdPartyTicketTable[] = [
   {
     "Grant/Reject": "Granted",
     "Batch Code": "BCH001",
@@ -116,21 +117,21 @@ const thirdPartyTicketsData:thirdPartyTicketTable[] = [
 
 
 const predefinedLayouts = {
-  default: [
+  Default: [
     { i: "Nominations", x: 0, y: 10, w: 6, h: 10 },
     { i: "Schedules", x: 6, y: 10, w: 6, h: 10 },
     { i: "Tickets", x: 0, y: 10, w: 6, h: 10 },
     { i: "PTOs", x: 6, y: 10, w: 6, h: 10 },
     { i: "Third Party Tickets", x: 0, y: 20, w: 6, h: 10 },
   ],
-  compact: [
+  Compact: [
     { i: "Nominations", x: 0, y: 0, w: 12, h: 5 },
     { i: "Schedules", x: 0, y: 5, w: 12, h: 5 },
     { i: "Tickets", x: 0, y: 10, w: 12, h: 5 },
     { i: "PTOs", x: 0, y: 15, w: 12, h: 5 },
     { i: "Third Party Tickets", x: 0, y: 20, w: 12, h: 5 },
   ],
-  grid: [
+  Grid: [
     { i: "Nominations", x: 0, y: 0, w: 4, h: 5 },
     { i: "Schedules", x: 4, y: 0, w: 4, h: 5 },
     { i: "Tickets", x: 8, y: 0, w: 4, h: 5 },
@@ -155,8 +156,8 @@ const pipelineOptions2: PipelineOption[] = [
 ];
 
 const Dashboard: React.FC = () => {
-  const [layout, setLayout] = useState<Layout[]>(predefinedLayouts.default);
-  const [layoutType, setLayoutType] = useState<string>("default");
+  const [layout, setLayout] = useState<Layout[]>(predefinedLayouts.Default);
+  const [layoutType, setLayoutType] = useState<string>("Default");
   const [selectedPipelines, setSelectedPipelines] = useState<
     MultiValue<PipelineOption>
   >([]);
@@ -166,16 +167,16 @@ const Dashboard: React.FC = () => {
   const [lastBreakpoint, setLastBreakpoint] = useState<string>("");
 
   const handleLayoutChange = (newLayout: Layout[]) => {
-    setLayout(newLayout);
+    setLayout(newLayout); 
   };
 
-  const handleLayoutSelect = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedLayout = event.target.value;
+  const handleLayoutSelect = (val: string) => {
+    const selectedLayout = val;
     setLayout(
       predefinedLayouts[selectedLayout as keyof typeof predefinedLayouts]
     );
     setLayoutType(selectedLayout);
-  }; 
+  };
 
   const handlePipelineChange = (
     selectedOptions: MultiValue<PipelineOption> | SingleValue<PipelineOption>
@@ -190,9 +191,9 @@ const Dashboard: React.FC = () => {
 
   const getRowHeight = () => {
     switch (layoutType) {
-      case "grid":
+      case "Grid":
         return 70;
-      case "compact":
+      case "Compact":
         return 70;
       default:
         return 30;
@@ -201,62 +202,82 @@ const Dashboard: React.FC = () => {
 
   const onBreakpointChange = (newBreakpoint: string) => {
     if (newBreakpoint !== lastBreakpoint) {
-      setLastBreakpoint(newBreakpoint); 
+      setLastBreakpoint(newBreakpoint);
       console.log(`Changed to ${newBreakpoint} breakpoint`);
 
       if (newBreakpoint === "lg" || newBreakpoint === "md") {
-        setLayout(predefinedLayouts.grid);
-        setLayoutType("grid");
+        setLayout(predefinedLayouts.Grid);
+        setLayoutType("Grid");
       } else if (newBreakpoint === "sm" || newBreakpoint === "xs") {
-        setLayout(predefinedLayouts.compact);
-        setLayoutType("compact");
+        setLayout(predefinedLayouts.Compact);
+        setLayoutType("Compact");
       } else {
-        setLayout(predefinedLayouts.default);
-        setLayoutType("default");
+        setLayout(predefinedLayouts.Default);
+        setLayoutType("Default");
       }
     }
   };
 
   return (
-    <div className="dashboard-container">
+    <div className={styles.dashboardContainer}>
 
-      <div className="d-flex justify-content-between ">
+      <div className={`d-flex justify-content-between`}>
 
-        <div className="header-left">
+        <div className={``}>
           <input
             type="text"
             placeholder="Batch Code"
-            className="batch-code-input"
+            className={styles.batchCodeInput}
           />
-          <button className="batch-search-btn">Batch Search</button>
+          <button className={styles.batchSearchBtn}>Batch Search</button>
         </div>
-        <div className="controls">
-          <select
-            className="layout-select"
-            value={layoutType}
-            onChange={handleLayoutSelect}
-          >
-            <option value="default">Default Layout</option>
-            <option value="compact">Compact Layout</option>
-            <option value="grid">Grid Layout</option>
-          </select>
+        <div className={styles.controls}>
+          <Dropdown className={styles.layoutDropdown}>
+            <Dropdown.Toggle className={styles.layoutDropdown} id="dropdown-basic">
+              {layoutType}
+            </Dropdown.Toggle>
+
+            <Dropdown.Menu className={styles.layoutDropdownMenu}>
+              <Dropdown.Item
+                className={styles.layoutDropdownItems}
+
+                onClick={() => handleLayoutSelect("Default")}
+              >
+                Default Layout
+              </Dropdown.Item>
+              <Dropdown.Item
+                className={styles.layoutDropdownItems}
+                onClick={() => handleLayoutSelect("Compact")}
+              >
+                Compact Layout
+              </Dropdown.Item>
+              <Dropdown.Item
+                className={styles.layoutDropdownItems}
+                onClick={() => handleLayoutSelect("Grid")}
+              >
+                Grid Layout
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
         </div>
       </div>
 
 
       <ResponsiveGridLayout
-        className="layout"
+        className={styles.layout}
         layouts={{ lg: layout }}
         breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}
         cols={{ lg: 12, md: 10, sm: 6, xs: 4, xxs: 2 }}
         rowHeight={getRowHeight()}
         width={1200}
         onLayoutChange={handleLayoutChange}
-        draggableHandle=".draggable-handle"
+        draggableHandle=".draggableHandle"
         onBreakpointChange={onBreakpointChange}
       >
 
-        <div key="Nominations" className="grid-item">
+        <div key="Nominations" className={`${styles.gridItem}`}>
+          <div className="draggableHandle">
+
           <DashboardTableWrapper
             key="Nominations"
             title="Nominations"
@@ -264,10 +285,12 @@ const Dashboard: React.FC = () => {
             selectedPipelines={selectedPipelines}
             handlePipelineChange={handlePipelineChange}
             tableData={nominationsData}
-          />
+            />
+            </div>
         </div>
 
-        <div key="Schedules" className="grid-item">
+        <div key="Schedules" className={styles.gridItem}>
+        <div className="draggableHandle">
           <DashboardTableWrapper
             key="Schedules"
             title="Schedules"
@@ -277,8 +300,10 @@ const Dashboard: React.FC = () => {
             tableData={schedulesData}
           />
         </div>
+        </div>
 
-        <div key="Tickets" className="grid-item">
+        <div key="Tickets" className={styles.gridItem}>
+        <div className="draggableHandle">
           <DashboardTableWrapper
             key="Tickets"
             title="Tickets"
@@ -288,8 +313,10 @@ const Dashboard: React.FC = () => {
             tableData={ticketsData}
           />
         </div>
+        </div>
 
-        <div key="PTOs" className="grid-item">
+        <div key="PTOs" className={styles.gridItem}>
+        <div className="draggableHandle">
           <DashboardTableWrapper
             key="PTOs"
             title="PTOs"
@@ -299,16 +326,19 @@ const Dashboard: React.FC = () => {
             tableData={ptosData}
           />
         </div>
+        </div>
 
-        <div key="Third Party Tickets" className="grid-item"> 
+        <div key="Third Party Tickets" className={styles.gridItem}>
+        <div className="draggableHandle">
           <DashboardTableWrapper
             key="Third Party Tickets"
-            title="PTOs"
+            title="Third Party Tickets"
             pipelineOptions={pipelineOptions2}
             selectedPipelines={selectedPipelines2}
             handlePipelineChange={handlePipelineChange2}
             tableData={thirdPartyTicketsData}
           />
+        </div>
         </div>
 
       </ResponsiveGridLayout>
