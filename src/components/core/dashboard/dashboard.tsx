@@ -304,7 +304,7 @@ const Dashboard: React.FC = () => {
           />
         </div>
 
-        <div key="Third Party Tickets" className="grid-item">
+        <div key="Third Party Tickets" className="grid-item"> 
           <DashboardTableWrapper
             key="Third Party Tickets"
             title="PTOs"
