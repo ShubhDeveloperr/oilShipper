@@ -11,16 +11,18 @@
   align-items: center;
   gap: 10px;
 }
-
-.noticeCloseBtn {
-  font-size: large;
-  /* margin: 6px -90px 0px -20px; */
+.collapseToggle {
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
 }
-.noticeOpenBtn {
+
+.noticeToggleIcon {
+  font-size: 1.5rem;
   font-size: large;
   /* margin: 6px -90px 0px -20px; */
   cursor: pointer;
+  /* color: #333; */
 }
 
 .listContent {

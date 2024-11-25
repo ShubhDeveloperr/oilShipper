@@ -18,6 +18,8 @@
   left: 0;
   transition: width 0.3s;
   overflow-y: auto;
+  overflow-y: auto; /* Keep this for scrollability */
+  max-width: 100%; 
 }
 
 .sidebar.collapsed {
@@ -25,28 +27,36 @@
   padding: 0;
 }
 
-.sidebar-header {
+.navbar{
+  margin-top: -32px;
+}
+.sidebarHeader {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: #272F3C !important;
   padding: 10px 25px !important
 }
 
-.main-content {
+.mainContent {
   margin-left: 220px;
   /* padding: 20px; */
   width: calc(100% - 220px);
   transition: margin-left 0.3s, width 0.3s;
 }
 
-.sidebar.collapsed ~ .main-content {
+.sidebar.collapsed ~ .mainContent {
   margin-left: 70px; 
   width: calc(100% - 70px);
 }
 
-/* .foo-ter{
-  left: 0;
-} */
+.togBtn{
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  margin: 8px;
+
+}
 nav ul {
   list-style-type: none;
   padding: 0;
@@ -83,17 +93,17 @@ nav ul li a:hover {
   display: none;
 }
 
-.active-link {
+.activeLink {
   border-left: 4px solid #ff6c3a;
   background: #293846;
 }
 
-.active-link:hover {
+.activeLink:hover {
   background-color: #f1970f;
   color: white;
 }
 
-.sidebar.collapsed + .toggle-btn {
+.sidebar.collapsed + .toggleBtn {
   left: 80px;
 }
 .topHeader {
@@ -102,10 +112,9 @@ nav ul li a:hover {
   align-items: center;
   padding: 0 20px;
   z-index: 100;
-
 }
 
-.toggle-btn {
+.toggleBtn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -120,17 +129,17 @@ nav ul li a:hover {
   outline: none;
 }
 
-.toggle-btn:hover {
+.toggleBtn:hover {
   background-color: #3f576e;
   transform: scale(1.1);
 }
 
-.toggle-btn:active {
+.toggleBtn:active {
   background-color: #444;
   transform: scale(1);
 }
 
-.toggle-btn svg {
+.toggleBtn svg {
   font-size: 14px; 
 }
 
@@ -142,7 +151,7 @@ nav ul li a:hover {
   cursor: pointer;
 }
 
-.foo-ter{
+.foooter{
   background: none repeat scroll 0 0 #fff;
   bottom: 0;
   left: 220px;
@@ -153,7 +162,7 @@ nav ul li a:hover {
   transition: left 0.3s, width 0.3s;
 }
 
-.sidebar.collapsed ~ .main-content .foo-ter {
+.sidebar.collapsed ~ .mainContent .foooter {
   left: 70px; 
   width: calc(100% - 70px); 
 }
@@ -163,24 +172,28 @@ nav ul li a:hover {
     width: 200px;
   }
 
-  .main-content {
+  .mainContent {
     margin-left: 200px;
     width: calc(100% - 200px);
   }
 
-  .sidebar.collapsed ~ .main-content {
+  .sidebar.collapsed ~ .mainContent {
     margin-left: 70px;
     width: calc(100% - 70px);
   }
 
-  .foo-ter {
+  .foooter {
     left: 200px;
     width: calc(100% - 200px);
   }
 
-  .sidebar.collapsed ~ .main-content .foo-ter {
+  .sidebar.collapsed ~ .mainContent .foooter {
     left: 70px;
     width: calc(100% - 70px);
+  }
+  .topHeader {
+    flex-direction: column; 
+    align-items: stretch; 
   }
 }
 
@@ -189,24 +202,28 @@ nav ul li a:hover {
     width: 0;
   }
 
-  .main-content {
+  .mainContent {
     margin-left: 0;
     width: 100%;
   }
 
-  .sidebar.collapsed ~ .main-content {
+  .sidebar.collapsed ~ .mainContent {
     margin-left: 70px;
     width: calc(100% - 70px);
   }
-  .foo-ter {
+  .foooter {
     left: 0; 
     width: 100%; 
     padding: 10px 15px;
   }
 
-  .sidebar.collapsed ~ .main-content .foo-ter {
+  .sidebar.collapsed ~ .mainContent .foooter {
     left: 70px; 
     width: calc(100% - 70px);
+  }
+  .topHeader {
+    flex-direction: column; 
+    align-items: stretch; 
   }
 }
 
@@ -215,30 +232,34 @@ nav ul li a:hover {
     width: 0;
   }
 
-  .main-content {
+  .mainContent {
     margin-left: 0;
     width: 100%;
   }
 
-  .sidebar.collapsed ~ .main-content {
+  .sidebar.collapsed ~ .mainContent {
     margin-left: 70px;
     width: calc(100% - 70px);
   }
 
-  .sidebar-header {
+  .sidebarHeader {
     padding: 5px;
   }
 
-  .foo-ter {
+  .foooter {
     left: 0;
     width: 100%;
     padding: 5px 10px;
     font-size: 12px; 
   }
 
-  .sidebar.collapsed ~ .main-content .foo-ter {
+  .sidebar.collapsed ~ .mainContent .foooter {
     left: 70px;
     width: calc(100% - 70px);
+  }
+  .topHeader {
+    flex-direction: column; 
+    align-items: stretch; 
   }
 }
 

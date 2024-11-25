@@ -28,6 +28,13 @@
 .headerDropdownToggle .dropdownTitle {
   margin-right: 8px !important;
   font-size: 14px !important;
+  color: #6c757d !important;
+  font-weight: bold;
+}
+.headerDropdownToggle .dropdownTitle span{
+  font-size: 14px !important;
+  color: #6c757d !important;
+  font-weight: normal;
 }
 
 .headerDropdownToggle .userIcon {

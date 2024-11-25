@@ -1,5 +1,5 @@
 import styles from "./header.module.css";
-import ShipperDropdown from "./shipperDropDown";
+// import ShipperDropdown from "./shipperDropDown";
 import UserNotifications from "./userNotifications";
 import UserProfile from "./userProfile";
 
@@ -22,7 +22,7 @@ const Header = ({
 }: HeaderProps) => {
   return (
     <div className={styles.headerContainer}>
-      <ShipperDropdown />
+      
       <div className={styles.headerRight}>
         <UserNotifications />
         <UserProfile

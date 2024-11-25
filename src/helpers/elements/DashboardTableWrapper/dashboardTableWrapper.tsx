@@ -21,6 +21,7 @@ type TableWrapperProps = {
   selectedPipelines: MultiValue<PipelineOption>;
   handlePipelineChange: (selectedOptions: MultiValue<PipelineOption>) => void;
   tableData: nominationTable[] | schedulesTable[] | ticketsTable[] | ptoSTable[] | thirdPartyTicketTable[];
+  dragHandleClass?: string
 };
 
 const DashboardTableWrapper: React.FC<TableWrapperProps> = ({
@@ -30,10 +31,12 @@ const DashboardTableWrapper: React.FC<TableWrapperProps> = ({
   selectedPipelines,
   handlePipelineChange,
   tableData,
+  dragHandleClass,
 }) => {
   console.log({ key });
   const [sortColumn, setSortColumn] = useState<string | null>(null);
   const [sortDirection, setSortDirection] = useState<"asc" | "desc" | null>("asc");
+  const [isCollapsed, setIsCollapsed] = useState(false);
 
   const tableHeaders = tableData.length > 0 ? Object.keys(tableData[0]) : [];
   const isRowObject = (row: object, key: string): boolean => key in row;
@@ -59,11 +62,13 @@ const DashboardTableWrapper: React.FC<TableWrapperProps> = ({
     return 0;
   });
 
+  const toggleCollapse = () => setIsCollapsed((prev) => !prev);
+
   return (
     <div>
       <div className={styles.itemHeader}>
         <div className={"d-flex gap-1"}>
-          <div className={`${styles.dragIcon} ${styles.draggableHandle}`} >
+          <div className={`${styles.dragIcon} ${styles.draggableHandle} ${dragHandleClass}`} >
             <RiDragMove2Fill className="draggable-icon" />
           </div>
           <div className={styles.dragTitle}>
@@ -84,11 +89,21 @@ const DashboardTableWrapper: React.FC<TableWrapperProps> = ({
             styles={colourStyles}
           />
         </div>
-        <div>
-          <MdOutlineKeyboardDoubleArrowDown className={styles.noticeCloseBtn} aria-label="Close" />
-          <MdOutlineKeyboardDoubleArrowUp className={styles.noticeOpenBtn} aria-label="Close" />
+        <div onClick={toggleCollapse} className={styles.collapseToggle}>
+          {isCollapsed ? (
+            <MdOutlineKeyboardDoubleArrowDown
+              className={styles.noticeToggleIcon}
+              aria-label="Expand"
+            />
+          ) : (
+            <MdOutlineKeyboardDoubleArrowUp
+              className={styles.noticeToggleIcon}
+              aria-label="Collapse"
+            />
+          )}
         </div>
       </div>
+      {!isCollapsed && (
       <div className={styles.listContent}>
         <div className={styles.tableContainer}>
           <table>
@@ -159,6 +174,7 @@ const DashboardTableWrapper: React.FC<TableWrapperProps> = ({
           </table>
         </div>
       </div>
+      )}
     </div>
   );
 };
