@@ -221,17 +221,17 @@ const Dashboard: React.FC = () => {
   return (
     <div className={styles.dashboardContainer}>
 
-      <div className={`d-flex justify-content-between`}>
+      <div className={`d-flex flex-wrap justify-content-between mb-3`}>
 
-        <div className={``}>
+        <div className={`d-flex flex-wrap gap-4 h-25`}>
           <input
             type="text"
             placeholder="Batch Code"
-            className={styles.batchCodeInput}
+            className={`${styles.batchCodeInput} form-control`}
           />
           <button className={styles.batchSearchBtn}>Batch Search</button>
         </div>
-        <div className={styles.controls}>
+        <div className={`${styles.controls}`}>
           <Dropdown className={styles.layoutDropdown}>
             <Dropdown.Toggle className={styles.layoutDropdown} id="dropdown-basic">
               {layoutType}
@@ -285,12 +285,13 @@ const Dashboard: React.FC = () => {
             selectedPipelines={selectedPipelines}
             handlePipelineChange={handlePipelineChange}
             tableData={nominationsData}
+            dragHandleClass="draggableHandle"
             />
             </div>
         </div>
 
         <div key="Schedules" className={styles.gridItem}>
-        <div className= "">
+        <div className="">
           <DashboardTableWrapper
             key="Schedules"
             title="Schedules"
@@ -298,6 +299,7 @@ const Dashboard: React.FC = () => {
             selectedPipelines={selectedPipelines2}
             handlePipelineChange={handlePipelineChange2}
             tableData={schedulesData}
+            dragHandleClass="draggableHandle"
           />
         </div>
         </div>
@@ -311,6 +313,7 @@ const Dashboard: React.FC = () => {
             selectedPipelines={selectedPipelines2}
             handlePipelineChange={handlePipelineChange2}
             tableData={ticketsData}
+            dragHandleClass="draggableHandle"
           />
         </div>
         </div>
@@ -324,6 +327,7 @@ const Dashboard: React.FC = () => {
             selectedPipelines={selectedPipelines2}
             handlePipelineChange={handlePipelineChange2}
             tableData={ptosData}
+            dragHandleClass="draggableHandle"
           />
         </div>
         </div>
@@ -337,6 +341,7 @@ const Dashboard: React.FC = () => {
             selectedPipelines={selectedPipelines2}
             handlePipelineChange={handlePipelineChange2}
             tableData={thirdPartyTicketsData}
+            dragHandleClass="draggableHandle"
           />
         </div>
         </div>

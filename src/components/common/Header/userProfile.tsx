@@ -30,7 +30,8 @@ export default function UserProfile({
               className={styles.headerDropdownToggle}
             >
               <span className={styles.dropdownTitle}>
-                Shipper: {shipperName || "Enercross LLC"} (
+                <span>Shipper:
+                  </span> {shipperName || "Enercross LLC"} (
                 {shipperId || "078711334"})
               </span>
               <FaUser className={styles.userIcon} />

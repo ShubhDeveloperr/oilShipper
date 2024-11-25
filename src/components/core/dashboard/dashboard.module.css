@@ -46,7 +46,7 @@
   flex-direction: column;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   border: 1px solid #34495e;
-  /* height: auto !important; */
+  height: auto !important;
 }
 
 .draggablehandle {
@@ -79,6 +79,18 @@
   border: none;
   border-radius: 4px;
   cursor: pointer;
+}
+
+.gridItem {
+  transition: height 0.3s ease, opacity 0.3s ease;
+  height: auto;
+  /* opacity: 1; */
+}
+
+.gridItem.collapsed {
+  height: 0px ;
+  /* opacity: 0; */
+  overflow: hidden;
 }
 
 @media (max-width: 1200px) {
